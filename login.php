@@ -7,7 +7,7 @@ require "db.php";
 require "classes/Utilisateur.php";
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-    if (($_POST['pseudo'] === "pseudo" && $_POST['password'] === "mot_de_passe'")) {
+    if (($_POST['pseudo'] === $pseudo && $_POST['password'] === $mot_de_passe)) {
         session_start();
         $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['connected'] = true;
