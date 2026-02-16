@@ -1,0 +1,11 @@
+CREATE DATABASE ville_php DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+
+CREATE TABLE utilisateurs(
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    pseudo VARCHAR(100) NOT NULL UNIQUE, 
+    mot_de_passe VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    id_ville INT NULL
+);
