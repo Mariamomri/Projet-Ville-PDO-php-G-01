@@ -3,8 +3,11 @@ $nav = "login";
 $title = "Login";
 $erreur = null;
 
+require "db.php";
+require "classes/Utilisateur.php";
+
 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-    if (($_POST['pseudo'] === "Mariam" && $_POST['password'] === "123") || ($_POST['pseudo'] === "Nisrin" && $_POST['password'] === "123")) {
+    if (($_POST['pseudo'] === "pseudo" && $_POST['password'] === "mot_de_passe'")) {
         session_start();
         $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['connected'] = true;
@@ -39,6 +42,11 @@ if (is_connected()) {
                     <input type="password" name="password" placeholder="Entrez votre password">
                     <br>
                     <button type="submit" class="btn-form-log">Se connecter</button>
+
+                </form>
+
+                <form action="./s'enregistrer.php" method="POST">
+                    <button type="submit" class="btn-form-log">S'enregistrer</button>
                 </form>
             </section>
         </div>
