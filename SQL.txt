@@ -8,4 +8,4 @@ CREATE TABLE utilisateurs(
     mot_de_passe VARCHAR(255) NOT NULL,
     age INT NOT NULL,
     id_ville INT NULL
-);
+)ENGINE=InnoDB;
