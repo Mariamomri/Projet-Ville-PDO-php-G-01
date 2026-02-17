@@ -34,44 +34,42 @@ require_once "./functions/autentifications.php";
 </head>
 
 <body>
-<style>
-.blog-header {
-  background-color: black; 
-  color: white;         
-  text-align: center;
-  border: 1px solid white;
-}
+  <style>
+    .blog-header {
+      background-color: black;
+      color: white;
+      text-align: center;
+      border: 1px solid white;
+    }
 
-.blog-header a {
-  color: grey;      
-  text-decoration: none;
-  font-weight: bold;
-}
+    .blog-header a {
+      color: grey;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.blog-header a:hover {
-  color: blueviolet;          
-}
+    .blog-header a:hover {
+      color: blueviolet;
+    }
 
-.navbar-nav .nav-link {
-  color: lightgrey;         
-  font-weight: bold;
-}
+    .navbar-nav .nav-link {
+      color: lightgrey;
+      font-weight: bold;
+    }
 
-.navbar-nav .nav-link:hover {
-  color: #22566dff;         
-}
-.navbar-nav {
-  display: flex;  
-  flex-direction: row;      
-  gap: 45px;            
-  justify-content: center; 
-  padding-left: 0;        
-  list-style: none;      
-}
+    .navbar-nav .nav-link:hover {
+      color: #22566dff;
+    }
 
-
-
-</style>
+    .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      gap: 45px;
+      justify-content: center;
+      padding-left: 0;
+      list-style: none;
+    }
+  </style>
   <div class="container">
     <header class="blog-header py-3 border-bottom text-center">
       <a class="blog-header-logo text-white" href="#" style="font-size: 2rem; font-weight: bold;">
@@ -96,7 +94,8 @@ require_once "./functions/autentifications.php";
     </header>
 
     <nav class="nav d-flex justify-content-center py-2 mb-3">
-      <a class="nav-link text-muted <?php if ($nav === 'accueil') echo 'active font-weight-bold text-dark'; ?>"
+      <a class="nav-link <?php if ($nav === 'accueil') echo 'active'; ?>"
+        style="color: white; font-weight: bold;"
         href="/PHP/Projet-Ville-PDO-php-G-01/index.php">Accueil</a>
 
       <!-- Profil -->
@@ -107,9 +106,9 @@ require_once "./functions/autentifications.php";
       <?php endif; ?>
 
       <!-- fin -->
- 
+
 
     </nav>
   </div>
-  
+
 </body>
