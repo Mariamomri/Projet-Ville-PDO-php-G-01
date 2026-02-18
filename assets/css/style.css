@@ -2,18 +2,17 @@
 .blog-header {
   background-color: black;
   color: white;
-  text-align: center;
   border: 1px solid white;
 }
 
 .blog-header a {
-  color: grey;
+  color: lightgrey;
   text-decoration: none;
   font-weight: bold;
 }
 
 .blog-header a:hover {
-  color: blueviolet;
+  color: #22566dff;
 }
 
 .navbar-nav .nav-link {
@@ -30,8 +29,39 @@
   flex-direction: row;
   gap: 45px;
   justify-content: center;
+  align-items: center;
   padding-left: 0;
   list-style: none;
 }
 
-/* fin header*/
+/* fin header */
+
+
+/* header */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: lightgrey;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin: 0 20px;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+  color: #22566dff;
+  border-bottom-color: #c9a961;
+}
+
+/* Menu + Dropdown */
+.right {
+  float: right;
+  margin-top: -40px;
+}
