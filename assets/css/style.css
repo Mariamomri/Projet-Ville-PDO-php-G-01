@@ -1,3 +1,37 @@
-* {
-  font-family: Arial, Helvetica, sans-serif;
+/*header*/
+.blog-header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
 }
+
+.blog-header a {
+  color: grey;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.blog-header a:hover {
+  color: blueviolet;
+}
+
+.navbar-nav .nav-link {
+  color: lightgrey;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #22566dff;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* fin header*/
