@@ -212,3 +212,72 @@ footer a:hover {
   margin: 0 auto 20px auto;
   text-align: center;
 }
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .carousel {
+    width: 80%;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    margin: 0 15px;
+  }
+
+  .navbar-nav {
+    gap: 25px;
+  }
+}
+
+/* gsm */
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .blog-header {
+    padding: 15px 10px;
+  }
+
+  .blog-header a {
+    font-size: 1.2rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 5px 10px;
+    padding: 5px 8px;
+  }
+
+  .carousel {
+    width: 95%;
+  }
+
+  .right {
+    float: none;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .video-container {
+    padding-bottom: 56.25%;
+  }
+}
