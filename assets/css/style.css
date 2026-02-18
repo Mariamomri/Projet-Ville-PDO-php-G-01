@@ -70,11 +70,12 @@ nav a {
   color: lightgrey;
   text-decoration: none;
   font-size: 1.1rem;
-  margin: 0 20px;
+  margin: 20px;
   font-weight: 500;
   transition: color 0.2s;
   padding: 5px 10px;
   border-bottom: 2px solid transparent;
+
 }
 
 nav a:hover,
@@ -83,6 +84,12 @@ nav a.active {
   border-bottom-color: #c9a961;
 }
 
+.right {
+  border: 2px solid #EDF2DD;
+  border-radius: 50%;
+  margin: 0px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
 
 
 /* page index*/
@@ -268,7 +275,6 @@ footer a:hover {
   }
 
   .right {
-    float: none;
     margin-top: 0;
     text-align: center;
   }
