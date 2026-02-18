@@ -6,16 +6,7 @@ $erreur = null;
 require "db.php";
 require "classes/Utilisateur.php";
 
-if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-    if (($_POST['pseudo'] === $pseudo && $_POST['password'] === $mot_de_passe)) {
-        session_start();
-        $_SESSION['pseudo'] = $_POST['pseudo'];
-        $_SESSION['connected'] = true;
-        header("Location: ./profil.php");
-    } else {
-        $erreur = "<p class='textError'>Identifiants incorrects ! </p>";
-    }
-}
+
 require "header.php";
 
 if (is_connected()) {
@@ -50,6 +41,19 @@ if (is_connected()) {
                 </form>
             </section>
         </div>
+
+        <?php
+        if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+            if (($_POST['pseudo'] === $pseudo && $_POST['password'] === $mot_de_passe)) {
+                session_start();
+                $_SESSION['pseudo'] = $_POST['pseudo'];
+                $_SESSION['connected'] = true;
+                header("Location: ./profil.php");
+            } else {
+                $erreur = "<p class='textError'>Identifiants incorrects ! </p>";
+            }
+        }
+        ?>
 
     </section>
 </main>
