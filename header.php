@@ -61,6 +61,8 @@ require_once "/functions/
           <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
         <?php endif; ?>
       </nav>
+
+
       <nav>
         <?php if (!is_connected()): ?>
           <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login</a>
