@@ -45,7 +45,7 @@ if (is_connected()) {
 
                 </form>
 
-                <form action="./s'enregistrer.php" method="POST">
+                <form action="./enregistrer.php" method="POST">
                     <button type="submit" class="btn-form-log">S'enregistrer</button>
                 </form>
             </section>

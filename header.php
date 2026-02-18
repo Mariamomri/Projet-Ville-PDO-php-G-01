@@ -2,8 +2,7 @@
 <html lang="en">
 <?php
 
-require_once "/functions/
-  autentifications.php";
+require_once "./functions/autentifications.php";
 ?>
 
 <head>
@@ -22,8 +21,7 @@ require_once "/functions/
     ?>
   </title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
 
   <!-- link bootstrap -->
@@ -35,40 +33,41 @@ require_once "/functions/
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="logo">
-        <img src="échange-de-signes-change-euro-et-dollar-conversion-monétaire-illustration-vectorielle-isolée-sur-fond-blanc-258991261.webp" alt="logo-img" width="100px">
-        <h1 class="titheader">Conversion</h1>
-      </div>
+  <div class="container">
+    <header class="blog-header py-3 border-bottom text-center">
+      <a class="blog-header-logo text-white" href="#" style="font-size: 2rem; font-weight: bold;">
+        LES PAYS A TRAVERS LE MONDE
+      </a>
 
-      <nav>
-        <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-        <a href="./bourse.php" class="nav-item<?php if (isset($nav) && $nav === "......"): ?> active<?php endif ?>">......</a>
+      <section class="navbar-nav mr-auto">
+        <nav>
+          <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
+          <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
 
-        <?php if (is_connected()): ?>
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Title menu dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="titleMenu">
-              <li><a class="dropdown-item" href="......php">......</a></li>
-              <li><a class="dropdown-item" href="......php">......</a></li>
-              <li><a class="dropdown-item" href="......php">.......</a></li>
-            </ul>
-          </div>
+          <?php if (is_connected()): ?>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Title menu dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="titleMenu">
+                <li><a class="dropdown-item" href="......php">......</a></li>
+                <li><a class="dropdown-item" href="......php">......</a></li>
+                <li><a class="dropdown-item" href="......php">.......</a></li>
+              </ul>
+            </div>
 
-          <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
-        <?php endif; ?>
-      </nav>
+            <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
+          <?php endif; ?>
+        </nav>
+      </section>
 
-
-      <nav>
+      <nav class="right">
         <?php if (!is_connected()): ?>
           <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login</a>
         <?php else : ?>
-          <a class="nav-item log" href="./logout.php">Logout</a>
+          <a class="nav-item" href="./logout.php">Logout</a>
         <?php endif; ?>
       </nav>
+
 
     </header>
