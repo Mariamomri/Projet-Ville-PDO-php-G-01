@@ -19,6 +19,13 @@ body::before {
 }
 
 /*header*/
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .blog-header {
   background-color: black;
   color: white;
@@ -76,11 +83,6 @@ nav a.active {
   border-bottom-color: #c9a961;
 }
 
-/* Menu + Dropdown */
-.right {
-  float: right;
-  margin-top: -40px;
-}
 
 
 /* page index*/
