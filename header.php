@@ -69,9 +69,9 @@ require_once "./functions/autentifications.php";
         <div>
           <nav class="right">
             <?php if (!is_connected()): ?>
-              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login</a>
+              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php else : ?>
-              <a class="nav-item" href="./logout.php">Logout</a>
+              <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php endif; ?>
           </nav>
         </div>
