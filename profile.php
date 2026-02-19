@@ -17,18 +17,41 @@ if (!is_connected()) {
       <br>
 
       <h1>Bienvenue <?php echo $_SESSION['pseudo']; ?> !</h1>
-      <img src="assets/img/profilf.png" alt="img profil" width="150px" class="img-profil">
+      <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil">
     </section>
     <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
     <br>
     <section>
 
+      <?php
+
+      try {
+        $resultat = $pdo->query('SELECT * from utilisateurs');
+        $tabUsers = $resultat->fetch(PDO::FETCH_OBJ);
+      } catch (PDOException $e) {
+        die('Erreur : ' . $e->getMessage());
+      }
+
+      ?>
+
       <h1>Profil</h1>
 
-      <p><strong>Nom:</strong> <?php echo $_SESSION['pseudo']; ?></p>
-      <p><strong>Prénom:</strong> <?php echo $_SESSION['pseudo']; ?></p>
-      <p><strong>Pseudo:</strong> <?php echo $_SESSION['pseudo']; ?></p>
-      <!-- afficher lo to_string ici -->
+      <?php
+      $pseudo = $_POST['pseudo']; // esempio
+
+      $user = $pdo->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
+      $user->execute(['pseudo' => $pseudo]);
+
+      $persona = $user->fetch(PDO::FETCH_OBJ);
+
+      if ($persona) {
+        echo "Nom : " . $persona->nom . "<br>";
+        echo "Prenom : " . $persona->prenom . "<br>";
+        echo "Pseudo : " . $persona->pseudo;
+      } else {
+        echo "Utilisateur non trouvé";
+      }
+      ?>
 
       <h2>ville et la nationalité</h2>
 
