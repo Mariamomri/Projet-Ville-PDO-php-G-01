@@ -46,7 +46,7 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']
         <br>
         <form action="updateUser.php" method="POST">
             <input type="number" name="id_user" placeholder="Entrez l'id de l'user">
-            <button type="submit">Rechercher</button>
+            <button type="submit" class="btn-form-log">Rechercher</button>
         </form>
         <?php if (isset($resultat) && $resultat != false): ?>
             <form action="updateUser.php" method="POST">
@@ -83,7 +83,6 @@ if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']
                         <option value="Charlroi">Charlroi</option>
                     </optgroup>
                 </select> -->
-
                 <button class="btn-form-log" type="submit">Update</button>
             </form>
         <?php elseif (isset($_POST['id_user'])):
