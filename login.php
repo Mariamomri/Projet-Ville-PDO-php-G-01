@@ -55,10 +55,10 @@ if (is_connected()) {
                     header("Location: ./profile.php");
                     exit;
                 } else {
-                    echo  "<p class='textError'>Pseudo ou Mot de passe incorrect1 !</p>";
+                    echo  "<p class='textError'>Pseudo ou Mot de passe incorrect !</p>";
                 } // in questo non mostra l'errore perche da user null quindi add un'altro else
             } else {
-                echo "<p class='textError'>Pseudo ou Mot de passe incorrect !</p>";
+                echo "<p class='textError'> <img src='assets/img/emoji-la-pelicula-png-emoji-movie-poster-11x17-inch-promo-movie-poster-11562986708j66r5gvcas.png' alt='x' width='80px'> Pseudo ou Password incorrect !</p>";
             }
         }
 
