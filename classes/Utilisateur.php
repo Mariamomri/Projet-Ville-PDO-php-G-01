@@ -107,12 +107,9 @@ class Utilisateur
   //to string
   public function __toString(): string
   {
-    return  "Nom : " . $this->nom . "<br>" .
+    return
+      "Nom : " . $this->nom . "<br>" .
       "prenom : " . $this->prenom . "<br>" .
-      "pseudo : " . $this->pseudo . "<br>" .
-      "Connecté ? : " . ($this->connecte ? "oui" : "non") . "<br><br>";
+      "pseudo : " . $this->pseudo . "<br>";
   }
-
-
-  public function getNationalite(): string {}
 }

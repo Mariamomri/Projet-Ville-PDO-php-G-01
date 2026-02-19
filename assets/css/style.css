@@ -19,6 +19,13 @@ body::before {
 }
 
 /*header*/
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .blog-header {
   background-color: black;
   color: white;
@@ -63,11 +70,12 @@ nav a {
   color: lightgrey;
   text-decoration: none;
   font-size: 1.1rem;
-  margin: 0 20px;
+  margin: 20px;
   font-weight: 500;
   transition: color 0.2s;
   padding: 5px 10px;
   border-bottom: 2px solid transparent;
+
 }
 
 nav a:hover,
@@ -76,10 +84,11 @@ nav a.active {
   border-bottom-color: #c9a961;
 }
 
-/* Menu + Dropdown */
 .right {
-  float: right;
-  margin-top: -40px;
+  border: 2px solid #EDF2DD;
+  border-radius: 50%;
+  margin: 0px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
 }
 
 
@@ -209,4 +218,121 @@ footer a:hover {
   max-width: 400px;
   margin: 0 auto 20px auto;
   text-align: center;
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .carousel {
+    width: 80%;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    margin: 0 15px;
+  }
+
+  .navbar-nav {
+    gap: 25px;
+  }
+}
+
+/* gsm */
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .blog-header {
+    padding: 15px 10px;
+  }
+
+  .blog-header a {
+    font-size: 1.2rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    margin: 5px 10px;
+    padding: 5px 8px;
+  }
+
+  .carousel {
+    width: 95%;
+  }
+
+  .right {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .video-container {
+    padding-bottom: 56.25%;
+  }
+}
+
+/* profil*/
+.yellow {
+  background-color: #eeebe4;
+}
+
+/* profilo */
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-image {
+  border-radius: 50%;
+  border: 5px solid #c9a961;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.profile-title {
+  color: #c9a961;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+/* profile */
+
+.monProfil {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.img-profil {
+  border-radius: 50%;
+  border: 5px solid rgb(239, 230, 181);
+  box-shadow: 0 4px 24px rgba(218, 32, 172, 0.1), 0 1.5px 8px rgba(0, 0, 0, 0.08);
+  z-index: 2;
 }
