@@ -287,3 +287,52 @@ footer a:hover {
     padding-bottom: 56.25%;
   }
 }
+
+/* profil*/
+.yellow {
+  background-color: #eeebe4;
+}
+
+/* profilo */
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-image {
+  border-radius: 50%;
+  border: 5px solid #c9a961;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.profile-title {
+  color: #c9a961;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+/* profile */
+
+.monProfil {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.img-profil {
+  border-radius: 50%;
+  border: 5px solid rgb(239, 230, 181);
+  box-shadow: 0 4px 24px rgba(218, 32, 172, 0.1), 0 1.5px 8px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}

@@ -3,7 +3,7 @@ $nav = "login";
 $title = "Login";
 $erreur = null;
 
-require "db.php";
+require "bd.php";
 require "classes/Utilisateur.php";
 
 
@@ -43,8 +43,22 @@ if (is_connected()) {
         </div>
 
         <?php
+        // if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+        //     if (($_POST['pseudo'] === $pseudo && $_POST['password'] === $mot_de_passe)) {
+        //         session_start();
+        //         $_SESSION['pseudo'] = $_POST['pseudo'];
+        //         $_SESSION['connected'] = true;
+        //         header("Location: ./profil.php");
+        //     } else {
+        //         $erreur = "<p class='textError'>Identifiants incorrects ! </p>";
+        //     }
+        // }
+
+
+
+        // pour le moment
         if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-            if (($_POST['pseudo'] === $pseudo && $_POST['password'] === $mot_de_passe)) {
+            if (($_POST['pseudo'] === "Mariam" && $_POST['password'] === "123") || ($_POST['pseudo'] === "Nisrin" && $_POST['password'] === "123")) {
                 session_start();
                 $_SESSION['pseudo'] = $_POST['pseudo'];
                 $_SESSION['connected'] = true;
@@ -53,6 +67,8 @@ if (is_connected()) {
                 $erreur = "<p class='textError'>Identifiants incorrects ! </p>";
             }
         }
+
+
         ?>
 
     </section>
