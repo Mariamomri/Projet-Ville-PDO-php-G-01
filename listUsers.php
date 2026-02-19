@@ -8,12 +8,12 @@ if (!is_connected()) {
 require "bd.php";
 ?>
 <center><b>
-        <h1>List of Users from db(coursmysql)</h1>
+        <h1>List of Users from db(ville_php)</h1>
     </b></center>
 <?php
 
 try {
-    $resultat = $pdo->query('SELECT * from users');
+    $resultat = $pdo->query('SELECT * from utilisateurs');
     $tabUsers = $resultat->fetchAll(PDO::FETCH_OBJ);
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
@@ -40,7 +40,7 @@ try {
                         <td><?php echo $user->nom; ?></td>
                         <td><?php echo $user->prenom; ?></td>
                         <td><?php echo $user->pseudo; ?></td>
-                        <td><?php echo $user->motDePasse; ?></td>
+                        <td><?php echo $user->mot_de_passe; ?></td>
                         <td><?php echo $user->age; ?></td>
                     </tr>
                 <?php } ?>
