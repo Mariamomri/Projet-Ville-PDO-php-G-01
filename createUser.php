@@ -54,8 +54,8 @@ require "bd.php";
             <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
             <br>
             <input type="number" name="age" placeholder="Age" required>
-            <br><!-- <br>
-            <select name="ville" required>
+            <br><br>
+            <!-- <select name="ville" required>
                 <option value="Bruxelles">Bruxelles</option>
                 <option value="Bologna">Bologna</option>
                 <option value="Charlroi">Charlroi</option>
