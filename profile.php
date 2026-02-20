@@ -2,8 +2,9 @@
 session_start(); 
 $title = "Profil";
 $nav = "profil";
-require "header.php";
 require "bd.php";
+require "header.php";
+
 
 if (!is_connected()) {
   header("Location: ./login.php");

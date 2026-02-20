@@ -2,7 +2,7 @@
 session_start();
 $nav = "login";
 $title = "Login";
-
+require_once "./functions/autentifications.php";
 // connexion à la base
 require "bd.php";  
 
@@ -28,7 +28,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
         if ($user) {
             // Comparaison du mdp
             if ($password === $user->mot_de_passe) {
-                $_SESSION['user_id'] = $user->id;
+                $_SESSION['user_id'] = $user->id_user;
                 $_SESSION['pseudo'] = $user->pseudo;
                 $_SESSION['connected'] = true;
 
