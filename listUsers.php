@@ -1,13 +1,14 @@
 <?php
+session_start();
 $title = "List Of Users";
 $nav = "listUsers";
-require "header.php";
+require_once "./functions/autentifications.php"; 
 
 if (!is_connected()) {
     header("location: ./login.php");
     exit;
 }
-
+require "header.php";
 require "bd.php";
 
 // changer le pays en nationalité

@@ -1,10 +1,13 @@
 <?php
+session_start();
 $title = "Create User";
 $nav = "createUser";
-require "header.php";
+require_once "./functions/autentifications.php"; 
+
 if (!is_connected()) {
     header("location: ./login.php");
 }
+require "header.php";
 require "bd.php";
 ?>
 

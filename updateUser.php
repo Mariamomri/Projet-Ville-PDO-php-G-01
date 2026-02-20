@@ -1,14 +1,18 @@
 <?php
+session_start();
 $nav = "updateuser";
 $title = "Update User";
 $erreur = null;
 $resultat = NULL;
-require "header.php";
-require "bd.php";
+require_once "./functions/autentifications.php"; 
+
 
 if (!is_connected()) {
     header("Location: login.php");
 }
+
+require "header.php";
+require "bd.php";
 
 if (!empty($_POST['id_user'])) {
     try {

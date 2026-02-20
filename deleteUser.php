@@ -1,13 +1,15 @@
 <?php
+session_start();
 $nav = "deleteuser";
 $title = "Delete User";
-require "header.php";
-require "bd.php";
+require_once "./functions/autentifications.php"; 
 
 if (!is_connected()) {
     header("Location: login.php");
     exit;
 }
+require "header.php";
+require "bd.php";
 
 $resultat = null;
 $erreur = null;

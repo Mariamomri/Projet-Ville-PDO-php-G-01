@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $title = "Enregistrement";
 $nav = "createUser";
 require "header.php";

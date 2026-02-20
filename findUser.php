@@ -1,11 +1,14 @@
 <?php
+session_start();
 $title = "Find User";
 $nav = "findUser";
-require "header.php";
+require_once "./functions/autentifications.php";
+
 if (!is_connected()) {
     header("location: ./login.php");
     exit;
 }
+require "header.php";
 require "bd.php";
 
 // Fonction nationalité
