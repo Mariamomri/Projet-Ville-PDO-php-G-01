@@ -1,10 +1,11 @@
 <?php
-$title = "Create User";
+
+// versione nisrin da aggiustare 
+session_start();
+
+$title = "Enregistrement";
 $nav = "createUser";
 require "header.php";
-if (!is_connected()) {
-    header("location: ./login.php");
-}
 require "bd.php";
 
 // Récupérer toutes les villes
@@ -15,57 +16,62 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
+// Fonction nationalité
+function nationalite($pays)
+{
+    $map = [
+        "France" => "Français",
+        "Belgique" => "Belge",
+        "Allemagne" => "Allemand",
+        "Espagne" => "Espagnol",
+        "Italie" => "Italien",
+        "Portugal" => "Portugais",
+        "Pays-Bas" => "Néerlandais",
+        "Autriche" => "Autrichien",
+        "Pologne" => "Polonais",
+        "Grèce" => "Grec"
+    ];
+    return $map[$pays];
+}
+
+// Traitement du formulaire
+if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age']) && !empty($_POST['ville'])) {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $pseudo = $_POST['pseudo'];
+    $mot_de_passe = $_POST['mot_de_passe']; // en clair
+    $age = $_POST['age'];
+    $id_ville = $_POST['ville'];
+
+    try {
+        $req = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, pseudo, mot_de_passe, age, id_ville) 
+                              VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_ville)');
+        $req->execute([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'pseudo' => $pseudo,
+            'mot_de_passe' => $mot_de_passe,
+            'age' => $age,
+            'id_ville' => $id_ville
+        ]);
+        echo "<p>L'utilisateur $prenom $nom a été ajouté !</p>";
+    } catch (PDOException $e) {
+        echo "<p>Erreur : " . $e->getMessage() . "</p>";
+    }
+}
 ?>
-<center><b>
-        <h1>Add User</h1>
-    </b></center>
+
+<center>
+    <h1 style="color:white">Enregistrement</h1>
+</center>
 <div align="center">
     <div class="col-6">
-        <?php
-
-        if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age']) && !empty($_POST['ville'])):
-
-
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $pseudo = $_POST['pseudo'];
-            $mot_de_passe = $_POST['mot_de_passe'];
-            $age = $_POST['age'];
-            $id_ville = $_POST['ville'];
-
-            try {
-                $req = $pdo->prepare('INSERT INTO utilisateurs VALUES(:id_user, :nom, :prenom, :pseudo, :mot_de_passe, :age, :id_ville)');
-                $req->execute(array(
-                    'id_user' => NULL,
-                    'nom' => $nom,
-                    'prenom' => $prenom,
-                    'pseudo' => $pseudo,
-                    'mot_de_passe' => $mot_de_passe,
-                    'age' => $age,
-                    'id_ville' => $id_ville
-                ));
-                echo "L'utilisateur " . $nom . " " . $prenom . " a été ajouté<br>";
-            } catch (PDOException $e) {
-                echo "Erreur : " . $e->getMessage();
-            }
-
-        else:
-            echo "Veuillez remplir les champs correctement";
-        endif;
-
-        ?>
-
-        <form action="./createUser.php" method="POST">
-            <input type="text" name="nom" placeholder="Nom" required>
-            <br>
-            <input type="text" name="prenom" placeholder="Prénom" required>
-            <br>
-            <input type="text" name="pseudo" placeholder="Pseudo" required>
-            <br>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
-            <br>
-            <input type="number" name="age" placeholder="Age" required>
-            <br><br>
+        <form action="" method="POST">
+            <input type="text" name="nom" placeholder="Nom" required><br>
+            <input type="text" name="prenom" placeholder="Prénom" required><br>
+            <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
+            <input type="number" name="age" placeholder="Age" required><br>
 
             <label>Ville :</label>
             <select name="ville" required>
@@ -74,16 +80,10 @@ try {
                     <option value="<?= $ville->id_ville ?>"><?= $ville->nom ?> (<?= nationalite($ville->pays) ?>)</option>
                 <?php endforeach; ?>
             </select><br><br>
-            <br>
 
-            <button class="btn-form-log" type="submit">S'enregistrer</button>
+            <button class="btn btn-primary" type="submit">S'enregistrer</button>
         </form>
-        <br>
     </div>
 </div>
 
-<?php
-
-require "footer.php";
-
-?>
+<?php require "footer.php"; ?>
