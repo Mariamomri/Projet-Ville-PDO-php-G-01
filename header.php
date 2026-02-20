@@ -33,63 +33,54 @@ require_once "./functions/autentifications.php";
 </head>
 
 <body>
-  <style>
-    .blog-header {
-      background-color: black;
-      color: white;
-      text-align: center;
-      border: 1px solid white;
-    }
-
-    .blog-header a {
-      color: grey;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .blog-header a:hover {
-      color: blueviolet;
-    }
-
-    .navbar-nav .nav-link {
-      color: lightgrey;
-      font-weight: bold;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #22566dff;
-    }
-
-    .navbar-nav {
-      display: flex;
-      flex-direction: row;
-      gap: 45px;
-      justify-content: center;
-      padding-left: 0;
-      list-style: none;
-    }
-  </style>
   <div class="container">
     <header class="blog-header py-3 border-bottom text-center">
-      <a class="blog-header-logo text-white" href="#" style="font-size: 2rem; font-weight: bold;">
-        LES PAYS A TRAVERS LE MONDE
-      </a>
+      <section class="flex">
+        <div>
+          <img src="assets/img/earth.gif" alt="monde" width="150px">
+        </div>
+        <div>
+          <a class="blog-header-logo text-white" href="#" style="font-size: 2rem; font-weight: bold;">
+            LES PAYS A TRAVERS LE MONDE
+          </a>
 
-      <ul class="navbar-nav mr-auto">
-        <?php if (!is_connected()): ?>
-          <li class="nav-item <?php if ($nav === "login"): ?> active <?php endif ?>">
-            <a class="nav-link" href="./login.php">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./createUser.php">S'enregistrer</a>
-          </li>
+          <section class="navbar-nav mr-auto">
+            <nav>
+              <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
+              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
 
-        <?php else : ?>
-          <li class="nav-item">
-            <a class="nav-link" href="./logout.php">Logout</a>
-          </li>
-        <?php endif; ?>
-      </ul>
+              <?php if (is_connected()): ?>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle <?php if (isset($nav) && ($nav === "base de données" || $nav === "createUser")): ?>active<?php endif ?>"
+                    href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    CRUD
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="titleMenu">
+                    <li><a class="dropdown-item" href="./listUsers">All Users</a></li>
+                    <li><a class="dropdown-item" href="./createUser.php">Create User</a></li>
+                    <li><a class="dropdown-item" href="./findUser.php">Read User</a></li>
+                    <li><a class="dropdown-item" href="./updateUser.php">Update User</a></li>
+                    <li><a class="dropdown-item" href="./deleteUser.php">Delete User</a></li>
+                  </ul>
+                </div>
+
+                <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
+              <?php endif; ?>
+            </nav>
+          </section>
+        </div>
+        <div>
+          <nav class="right">
+            <?php if (!is_connected()): ?>
+              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+            <?php else : ?>
+              <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+            <?php endif; ?>
+          </nav>
+        </div>
+      </section>
+
+
     </header>
 
     <nav class="nav d-flex justify-content-center py-2 mb-3">

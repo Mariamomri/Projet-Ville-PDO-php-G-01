@@ -336,3 +336,12 @@ footer a:hover {
   box-shadow: 0 4px 24px rgba(218, 32, 172, 0.1), 0 1.5px 8px rgba(0, 0, 0, 0.08);
   z-index: 2;
 }
+
+/*login*/
+.textError {
+
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+
+}
