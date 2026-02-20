@@ -1,8 +1,8 @@
 <?php
+session_start(); 
 $title = "Profil";
 $nav = "profil";
 require "header.php";
-require "classes/Utilisateur.php";
 require "bd.php";
 
 if (!is_connected()) {

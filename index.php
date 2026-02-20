@@ -3,7 +3,6 @@ session_start();
 
 $title = "Accueil";
 $nav = "index";
-require "./functions/autentifications.php";
 ?>
 
 <body>

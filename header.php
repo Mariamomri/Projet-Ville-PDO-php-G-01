@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <?php
-
 require_once "./functions/autentifications.php";
 ?>
 
@@ -71,7 +70,7 @@ require_once "./functions/autentifications.php";
         <div>
           <nav class="right">
             <?php if (!is_connected()): ?>
-              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+              <a href="./login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php else : ?>
               <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php endif; ?>
@@ -99,7 +98,3 @@ require_once "./functions/autentifications.php";
 
     </nav>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoXnF6V7w5eT2EpoYFq6dQm12Dd8RzKlfpQ0hEY1Xr3y0a2"
-    crossorigin="anonymous"></script>
-</body>
