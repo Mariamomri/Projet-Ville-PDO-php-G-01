@@ -9,40 +9,38 @@ require "bd.php";
 if (!is_connected()) {
   header("Location: ./login.php");
 }
+
+//recuper le pseudo de login
+$pseudo = $_SESSION['pseudo'];
+
+
+// chercher dans bd sql 
+$user = $pdo->prepare("SELECT nom, prenom, pseudo FROM utilisateurs WHERE pseudo = :pseudo");
+$user->execute(['pseudo' => $pseudo]);
+
+//data in form objet
+$persona = $user->fetch(PDO::FETCH_OBJ);
 ?>
 
 <main class="main yellow">
   <section class="Profil profile-section ">
+
     <section class="smain">
       <br>
 
-      <h1>Bienvenue <?php echo $_SESSION['pseudo']; ?> !</h1>
+      <h1>Bienvenue <?php echo $persona->prenom; ?> !</h1>
       <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil">
     </section>
     <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
     <br>
+
+
+    <img src="assets/img/neon-frame-vibrant-colored-glowing-neon-frame-with-transparent-background-png.png" alt="">
     <section>
-
-      <?php
-
-      try {
-        $resultat = $pdo->query('SELECT * from utilisateurs');
-        $tabUsers = $resultat->fetch(PDO::FETCH_OBJ);
-      } catch (PDOException $e) {
-        die('Erreur : ' . $e->getMessage());
-      }
-
-      ?>
 
       <h1>Profil</h1>
 
       <?php
-      $pseudo = $_POST['pseudo']; // esempio
-
-      $user = $pdo->prepare("SELECT * FROM utilisateur WHERE pseudo = :pseudo");
-      $user->execute(['pseudo' => $pseudo]);
-
-      $persona = $user->fetch(PDO::FETCH_OBJ);
 
       if ($persona) {
         echo "Nom : " . $persona->nom . "<br>";
@@ -52,6 +50,7 @@ if (!is_connected()) {
         echo "Utilisateur non trouvé";
       }
       ?>
+
 
       <h2>ville et la nationalité</h2>
 
@@ -72,8 +71,14 @@ if (!is_connected()) {
         //   }
         // } 
         ?>
+
       </table>
     </section>
 </main>
 
-<?php require "footer.php"; ?>
+<?php
+require "footer.php";
+?>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
