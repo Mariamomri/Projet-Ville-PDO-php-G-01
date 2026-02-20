@@ -14,7 +14,7 @@
 // var_dump($resultat->fetchAll(PDO::FETCH_OBJ));
 
 try {
-    $pdo = new PDO('mysql:dbname=ville_php;host=localhost', "root", "root");
+    $pdo = new PDO('mysql:dbname=ville_php;host=localhost', "root", " ");
     //On définit le mode d'erreur de PDO sur Exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo 'Connexion réussie';
