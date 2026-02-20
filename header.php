@@ -47,16 +47,15 @@ require_once "./functions/autentifications.php";
           <section class="navbar-nav mr-auto">
             <nav>
               <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
+              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "createUser"): ?> active<?php endif ?>">S'enregistrer</a>
 
               <?php if (is_connected()): ?>
-                <div class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle <?php if (isset($nav) && ($nav === "base de données" || $nav === "createUser")): ?>active<?php endif ?>"
-                    href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     CRUD
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="titleMenu">
-                    <li><a class="dropdown-item" href="./listUsers">All Users</a></li>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="./listUsers.php">All Users</a></li>
                     <li><a class="dropdown-item" href="./createUser.php">Create User</a></li>
                     <li><a class="dropdown-item" href="./findUser.php">Read User</a></li>
                     <li><a class="dropdown-item" href="./updateUser.php">Update User</a></li>
@@ -100,5 +99,7 @@ require_once "./functions/autentifications.php";
 
     </nav>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoXnF6V7w5eT2EpoYFq6dQm12Dd8RzKlfpQ0hEY1Xr3y0a2"
+    crossorigin="anonymous"></script>
 </body>
