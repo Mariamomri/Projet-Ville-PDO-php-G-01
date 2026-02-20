@@ -37,7 +37,7 @@ if (isset($_POST['delete'])) {
 ?>
 
 <div align="center">
-    <h1>Delete User</h1><br>
+    <h1 style="color:white">Delete User</h1><br>
 
     <form action="deleteUser.php" method="POST">
         <input type="number" name="id_user" placeholder="Entrez l'id de l'utilisateur" required>

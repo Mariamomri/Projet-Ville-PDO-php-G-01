@@ -2,14 +2,19 @@
 session_start(); 
 $title = "Profil";
 $nav = "profil";
-require "bd.php";
-require "header.php";
+
+require_once "./functions/autentifications.php";
+
 
 
 if (!is_connected()) {
   header("Location: ./login.php");
   exit;
 }
+
+require "classes/Utilisateur.php"; 
+require "bd.php";
+require "header.php";
 
 // Récupérer pseudo de l'utilisateur connecté
 $pseudo = $_SESSION['pseudo'];
@@ -49,7 +54,7 @@ function nationalite($pays)
 
 <main class="container my-5">
   <div class="text-center mb-4">
-    <h1>Bienvenue <?php echo htmlspecialchars($user->prenom); ?> !</h1>
+    <h1 style="color:white">Bienvenue <?php echo htmlspecialchars($user->prenom); ?> !</h1>
     <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="Photo profil" class="rounded-circle" width="150">
   </div>
 

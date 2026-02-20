@@ -34,7 +34,7 @@ function getNationalite($pays)
 
 <section class="yellow">
     <center>
-        <h1>Find User</h1>
+        <h1 style="color:white">Find User</h1>
     </center>
     <div align="center">
         <div class="col-6">

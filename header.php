@@ -46,7 +46,7 @@ require_once "./functions/autentifications.php";
           <section class="navbar-nav mr-auto">
             <nav>
               <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "createUser"): ?> active<?php endif ?>">S'enregistrer</a>
+
 
               <?php if (is_connected()): ?>
                 <div class="dropdown">
@@ -71,6 +71,7 @@ require_once "./functions/autentifications.php";
           <nav class="right">
             <?php if (!is_connected()): ?>
               <a href="./login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "createUser"): ?> active<?php endif ?>">S'enregistrer</a>
             <?php else : ?>
               <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php endif; ?>
@@ -82,9 +83,6 @@ require_once "./functions/autentifications.php";
     </header>
 
     <nav class="nav d-flex justify-content-center py-2 mb-3">
-      <a class="nav-link <?php if ($nav === 'accueil') echo 'active'; ?>"
-        style="color: white; font-weight: bold;"
-        href="/PHP/Projet-Ville-PDO-php-G-01/index.php">Accueil</a>
 
       <!-- Profil -->
       <?php if (is_connected()): ?>

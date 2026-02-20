@@ -58,7 +58,7 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
 ?>
 
 <center>
-    <h1>Enregistrement</h1>
+    <h1 style="color:white">Enregistrement</h1>
 </center>
 <div align="center">
     <div class="col-6">

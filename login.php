@@ -3,12 +3,8 @@ session_start();
 $nav = "login";
 $title = "Login";
 require_once "./functions/autentifications.php";
-// connexion à la base
-require "bd.php";  
 
-require "header.php";
-
-if (isset($_SESSION['user_id'])) {
+if (is_connected()) {
     header("Location: ./profile.php");
     exit;
 }
@@ -16,27 +12,21 @@ if (isset($_SESSION['user_id'])) {
 $error = "";
 
 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+    require "bd.php";
     $pseudo = $_POST['pseudo'];
     $password = $_POST['password'];
 
     try {
-        // récupérer l'utilisateur
-        $sql = "SELECT * FROM utilisateurs WHERE pseudo = '$pseudo'";
-        $result = $pdo->query($sql);
-        $user = $result->fetch(PDO::FETCH_OBJ);
+        $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE pseudo = :pseudo");
+        $stmt->execute(['pseudo' => $pseudo]);
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-        if ($user) {
-            // Comparaison du mdp
-            if ($password === $user->mot_de_passe) {
-                $_SESSION['user_id'] = $user->id_user;
-                $_SESSION['pseudo'] = $user->pseudo;
-                $_SESSION['connected'] = true;
-
-                header("Location: ./profile.php");
-                exit;
-            } else {
-                $error = "Pseudo ou mot de passe incorrect !";
-            }
+        if ($user && $password === $user->mot_de_passe) {
+            $_SESSION['user_id'] = $user->id_user;
+            $_SESSION['pseudo'] = $user->pseudo;
+            $_SESSION['connected'] = true;
+            header("Location: ./profile.php");
+            exit;
         } else {
             $error = "Pseudo ou mot de passe incorrect !";
         }
@@ -44,6 +34,9 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
         die("Erreur SQL : " . $e->getMessage());
     }
 }
+
+require "bd.php";
+require "header.php"; // ← HTML seulement ici
 ?>
 
 <main class="main login-main">
@@ -53,7 +46,6 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
             <br>
             <section class="card">
                 <?php if ($error) echo "<p class='textError'>$error</p>"; ?>
-                
                 <form action="" method="POST">
                     <input type="text" name="pseudo" placeholder="Entrez votre pseudo" required>
                     <br>
@@ -61,8 +53,7 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                     <br>
                     <button type="submit" class="btn-form-log">Se connecter</button>
                 </form>
-
-                <form action="./enregistrer.php" method="POST">
+                <form action="./enregistrer.php" method="GET">
                     <button type="submit" class="btn-form-log">S'enregistrer</button>
                 </form>
             </section>
@@ -70,6 +61,4 @@ if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
     </section>
 </main>
 
-<?php
-require "footer.php";
-?>
+<?php require "footer.php"; ?>

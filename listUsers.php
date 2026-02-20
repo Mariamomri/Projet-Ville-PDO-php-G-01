@@ -34,7 +34,7 @@ function getNationalite($pays) {
 
 ?>
 
-<center><h1>List of Users from db(ville_php)</h1></center>
+<center><h1 style="color:white">List of Users from db(ville_php)</h1></center>
 
 <?php
 try {

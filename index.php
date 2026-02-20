@@ -17,7 +17,7 @@ $nav = "index";
             <center>
 
                 <h3>
-                    Les bonnes nouvelles dans le monde 2025/2026 ! ......
+                    Les bonnes nouvelles dans le monde 2025/2026 !
                 </h3>
                 <br> <br>
                 <!-- carouSSEL -->

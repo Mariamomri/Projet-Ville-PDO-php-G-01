@@ -9,7 +9,7 @@ require "bd.php";
 ?>
 
 <center>
-    <h1>Add User</h1>
+    <h1 style="color:white">Add User</h1>
 </center>
 <div align="center">
     <div class="col-6">
