@@ -36,7 +36,12 @@ footer{
   </div>
 
 </footer>
+<<<<<<< HEAD
 </center>
+=======
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 14be887bfcee43627991d9172a4af75485fb0df6
 </body>
 
 </html>

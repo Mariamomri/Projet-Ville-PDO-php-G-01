@@ -21,8 +21,7 @@ require_once "./functions/autentifications.php";
     ?>
   </title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
 
   <!-- link bootstrap -->
