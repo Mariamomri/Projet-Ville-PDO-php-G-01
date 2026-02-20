@@ -4,6 +4,7 @@ session_start();
 $title = "Accueil";
 $nav = "index";
 require "header.php";
+require "bd.php";
 ?>
 
 
@@ -60,11 +61,38 @@ require "header.php";
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-
-
-
             <!-- carouSSEL FIN -->
+            <br><br>
 
+            <!-- TABLEAU DES PAYS -->
+             <h2 style="color:white">Les 10 pays de notre site</h2>
+            <?php
+            $resultat = $pdo->query('SELECT * FROM villes LIMIT 10');
+            $tabVilles = $resultat->fetchAll(PDO::FETCH_OBJ);
+            ?>
+            <div align="center">
+                <div class="col-6">
+                    <table class="table table-responsive table-hover table-striped table-dark table-bordered">
+                        <thead class="bg-dark text-white">
+                            <tr align="center">
+                                <th></th>
+                                <th>Ville</th>
+                                <th>Pays</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tabVilles as $index => $ville) { ?>
+                                <tr align="center">
+                                    <td><?= $index + 1 ?></td>
+                                    <td><?= $ville->nom ?></td>
+                                    <td><?= $ville->pays ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- TABLEAU FIN -->
 
         </center>
     </main>
