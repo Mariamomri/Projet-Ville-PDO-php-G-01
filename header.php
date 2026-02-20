@@ -47,7 +47,6 @@ require_once "./functions/autentifications.php";
           <section class="navbar-nav mr-auto">
             <nav>
               <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
 
               <?php if (is_connected()): ?>
                 <div class="nav-item dropdown">
@@ -72,7 +71,16 @@ require_once "./functions/autentifications.php";
         <div>
           <nav class="right">
             <?php if (!is_connected()): ?>
-              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+              <section class="f">
+                <div>
+                  <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+                </div><br><br>
+
+                <div>
+                  <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
+                </div>
+              </section>
+
             <?php else : ?>
               <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php endif; ?>
