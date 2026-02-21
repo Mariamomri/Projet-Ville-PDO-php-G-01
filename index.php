@@ -9,7 +9,6 @@ require "bd.php";
 
 
 <div class="wrapper">
-    <br>
     <main class="content">
         <center>
 
