@@ -7,48 +7,51 @@ if (!is_connected()) {
 }
 require "bd.php";
 ?>
-<center><b>
-        <h1>List of Users from db(ville_php)</h1>
-    </b></center>
-<?php
+<section class="yellow">
+    <center><b>
+            <br>
+            <h1>List of Users from db(ville_php)</h1>
+        </b></center>
+    <?php
 
-try {
-    $resultat = $pdo->query('SELECT * from utilisateurs');
-    $tabUsers = $resultat->fetchAll(PDO::FETCH_OBJ);
-} catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+    try {
+        $resultat = $pdo->query('SELECT * from utilisateurs');
+        $tabUsers = $resultat->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
 
-?>
-<div align="center">
-    <div class="col-6">
-        <table class="table table-responsive table-hover table-striped table-dark table-bordered ">
-            <thead class="bg-dark text-white">
-                <tr align="center">
-                    <th>Id User</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Pseudo</th>
-                    <th style="width: 180px;">Mot de passe</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($tabUsers as $user) { ?>
+    ?>
+    <div align="center">
+        <div class="col-6">
+            <table class="table table-responsive table-hover table-striped table-dark table-bordered ">
+                <thead class="bg-dark text-white">
                     <tr align="center">
-                        <td><?php echo $user->id_user; ?></td>
-                        <td><?php echo $user->nom; ?></td>
-                        <td><?php echo $user->prenom; ?></td>
-                        <td><?php echo $user->pseudo; ?></td>
-                        <td><?php echo $user->mot_de_passe; ?></td>
-                        <td><?php echo $user->age; ?></td>
+                        <th>Id User</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Pseudo</th>
+                        <th style="width: 180px;">Mot de passe</th>
+                        <th>Age</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($tabUsers as $user) { ?>
+                        <tr align="center">
+                            <td><?php echo $user->id_user; ?></td>
+                            <td><?php echo $user->nom; ?></td>
+                            <td><?php echo $user->prenom; ?></td>
+                            <td><?php echo $user->pseudo; ?></td>
+                            <td><?php echo $user->mot_de_passe; ?></td>
+                            <td><?php echo $user->age; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-
+    <br><br>
+</section>
 <?php
 
 require "footer.php";

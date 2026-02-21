@@ -1,4 +1,7 @@
 <?php
+
+require "classes/Villes.php";
+
 class Utilisateur
 {
   // Attributs

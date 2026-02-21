@@ -9,6 +9,7 @@ require "bd.php";
 ?>
 <section class="yellow">
     <center><b>
+            <br>
             <h1>Find User</h1>
         </b></center>
     <div align="center">
@@ -58,9 +59,11 @@ require "bd.php";
                     <input readonly value="<?php echo $user->age; ?>">
                     <br>
                 </form>
+                <br>
 
             <?php endif; ?>
         </div>
+        <br>
 </section>
 </div>
 

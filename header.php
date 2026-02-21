@@ -32,8 +32,8 @@ require_once "./functions/autentifications.php";
     crossorigin="anonymous" />
 </head>
 
-<body>
-  <div class="container">
+<body class="wrapper">
+  <div class="container content">
     <header class="blog-header py-3 border-bottom text-center">
       <section class="flex">
         <div>
@@ -47,16 +47,15 @@ require_once "./functions/autentifications.php";
           <section class="navbar-nav mr-auto">
             <nav>
               <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-              <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
 
               <?php if (is_connected()): ?>
                 <div class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle <?php if (isset($nav) && ($nav === "base de données" || $nav === "createUser")): ?>active<?php endif ?>"
-                    href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    href="#" id="titleMenu" role="button" aria-expanded="false">
                     CRUD
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="titleMenu">
-                    <li><a class="dropdown-item" href="./listUsers">All Users</a></li>
+                    <li><a class="dropdown-item" href="./listUsers.php">All Users</a></li>
                     <li><a class="dropdown-item" href="./createUser.php">Create User</a></li>
                     <li><a class="dropdown-item" href="./findUser.php">Read User</a></li>
                     <li><a class="dropdown-item" href="./updateUser.php">Update User</a></li>
@@ -72,7 +71,16 @@ require_once "./functions/autentifications.php";
         <div>
           <nav class="right">
             <?php if (!is_connected()): ?>
-              <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+              <section class="f">
+                <div>
+                  <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+                </div><br><br>
+
+                <div>
+                  <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
+                </div>
+              </section>
+
             <?php else : ?>
               <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
             <?php endif; ?>

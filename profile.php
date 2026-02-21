@@ -18,24 +18,31 @@ $pseudo = $_SESSION['pseudo'];
 $user = $pdo->prepare("SELECT nom, prenom, pseudo FROM utilisateurs WHERE pseudo = :pseudo");
 $user->execute(['pseudo' => $pseudo]);
 
-//data in form objet
+//data in formt objet
 $persona = $user->fetch(PDO::FETCH_OBJ);
 ?>
 
 <main class="main yellow">
   <section class="Profil profile-section ">
 
-    <section class="smain">
+    <section>
       <br>
 
       <h1>Bienvenue <?php echo $persona->prenom; ?> !</h1>
-      <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil">
+      <?php
+      if ($persona->prenom == "Julien") {
+        echo "<img src='assets/img/julien.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Mariam") {
+        echo "<img src='assets/img/profilf.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Nisrine") {
+        echo "<img src='assets/img/cat-facebook-profile-image-208004.jpg' alt='img profil' width='150px' class='img-profil'>";
+      } else {
+        echo "<img src='assets/img/profilx.avif' alt='img profil' width='150px' class='img-profil'>";
+      }
+
+      ?>
     </section>
-    <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
-    <br>
 
-
-    <img src="assets/img/neon-frame-vibrant-colored-glowing-neon-frame-with-transparent-background-png.png" alt="">
     <section>
 
       <h1>Profil</h1>
@@ -50,7 +57,10 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
         echo "Utilisateur non trouvé";
       }
       ?>
-
+      <br>
+      <br>
+      <br>
+      <br>
 
       <h2>ville et la nationalité</h2>
 
@@ -59,21 +69,26 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
           <th>Ville</th>
           <th>nationalité</th>
         </tr>
+        <?php // chercher dans bd sql 
+        $city = $pdo->prepare("SELECT nom, pays FROM villes WHERE pseudo = :pseudo");   // guardare le jointure
+        $city->execute(['pseudo' => $pseudo]);
 
-        <?php
-        // Mostriamo tutte le conversioni salvate
-        // if (!empty($_SESSION["transactions"])) {
-        //   foreach ($_SESSION["transactions"] as $t) {
-        //     echo "<tr>
-        //                         <td>" . $t["type"] . "</td>
-        //                         <td>" . $t["amount"] . "</td>
-        //                       </tr>";
-        //   }
-        // } 
+        //data in form objet
+        $from = $city->fetch(PDO::FETCH_OBJ);
         ?>
 
+        <tr>
+          <td><?php //echo $from->ville; 
+              ?></td>
+          <td><?php //echo $from->pays; 
+              ?></td>
+        </tr>
+
       </table>
+
     </section>
+
+    <img src="assets/img/sco.gif" alt="in cours">
 </main>
 
 <?php
