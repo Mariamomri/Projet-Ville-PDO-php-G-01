@@ -16,7 +16,7 @@ require "bd.php";
         <div class="col-6">
             <?php
 
-            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age'])):
+            if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age']) && !empty($_POST['ville'])):
 
 
                 $nom = $_POST['nom'];
@@ -24,9 +24,10 @@ require "bd.php";
                 $pseudo = $_POST['pseudo'];
                 $mot_de_passe = $_POST['mot_de_passe'];
                 $age = $_POST['age'];
+                $id_ville = $_POST['ville'];
 
                 try {
-                    $req = $pdo->prepare('INSERT INTO utilisateurs VALUES(:id_user, :nom, :prenom, :pseudo, :mot_de_passe, :age)');
+                    $req = $pdo->prepare('INSERT INTO utilisateurs VALUES(:id_user, :nom, :prenom, :pseudo, :mot_de_passe, :age, :id_user_ville)');
                     $req->execute(array(
                         'id_user' => NULL,
                         'nom' => $nom,
@@ -34,6 +35,7 @@ require "bd.php";
                         'pseudo' => $pseudo,
                         'mot_de_passe' => $mot_de_passe,
                         'age' => $age,
+                        'id_user_ville' => $id_ville
                     ));
                     echo "L'utilisateur " . $nom . " " . $prenom . " a été ajouté<br>";
                 } catch (PDOException $e) {
@@ -41,9 +43,13 @@ require "bd.php";
                 }
 
             else:
-                echo "Veuillez remplir les champs correctement";
+                if (!empty($_POST)):
+                    echo "Veuillez remplir les champs correctement";
+                endif;
             endif;
 
+            // Récupérer les villes
+            $villes = $pdo->query("SELECT * FROM villes ORDER BY nom")->fetchAll(PDO::FETCH_OBJ);
 
             ?>
 
@@ -61,11 +67,14 @@ require "bd.php";
 
 
 
-                <!-- <select name="ville" required>
-                    <option value="Bruxelles">Bruxelles</option>
-                    <option value="Bologna">Bologna</option>
-                    <option value="Charlroi">Charlroi</option>
-                </select> -->
+                <label>Ville :</label>
+                <select name="ville" required>
+                    <option value="">-- Sélectionnez une ville --</option>
+                    <?php foreach ($villes as $ville): ?>
+                        <option value="<?= $ville->id_ville ?>"><?= $ville->nom ?> (<?= $ville->pays ?>)</option>
+                    <?php endforeach; ?>
+                </select>
+                <br><br>
                 <br>
 
                 <button class="btn-form-log" type="submit">Ajouter</button>
