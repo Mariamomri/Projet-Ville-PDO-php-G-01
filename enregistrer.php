@@ -67,11 +67,11 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
 <div align="center">
     <div class="col-6">
         <form action="" method="POST">
-            <input type="text" name="nom" placeholder="Nom" required><br>
-            <input type="text" name="prenom" placeholder="Prénom" required><br>
-            <input type="text" name="pseudo" placeholder="Pseudo" required><br>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
-            <input type="number" name="age" placeholder="Age" required><br>
+            <input style="color:black" type="text" name="nom" placeholder="Nom" required><br>
+            <input style="color:black"type="text" name="prenom" placeholder="Prénom" required><br>
+            <input style="color:black" type="text" name="pseudo" placeholder="Pseudo" required><br>
+            <input style="color:black" type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
+            <input style="color:black" type="number" name="age" placeholder="Age" required><br>
 
             <label>Ville :</label>
             <select name="ville" required>

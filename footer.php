@@ -3,7 +3,7 @@
 </div> <!--fermeture de wrapper dans le header.php-->
 <footer>
   <div class="am">
-    <p> &copy; 2026 Cfitech, Mariam & Nisrin</p>
+    <p> &copy; 2026 Cfitech, Mariam & Nisrine</p>
   </div>
 
   <div class="footerlink am">
