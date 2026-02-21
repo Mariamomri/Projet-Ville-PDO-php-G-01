@@ -1,0 +1,36 @@
+CREATE DATABASE ville_php DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+
+CREATE TABLE utilisateurs(
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    pseudo VARCHAR(100) NOT NULL UNIQUE, 
+    mot_de_passe VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    id_ville INT NULL
+)ENGINE=InnoDB;
+
+CREATE TABLE `villes` (
+  `id_ville` int NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `pays` varchar(100) NOT NULL
+   capitale varchar(100) NOT NULL
+) ENGINE=InnoDB;
+
+INSERT INTO `villes` (`id_ville`, `nom`, `pays`,capitale) VALUES
+(1, 'Lion', 'France','Paris' ),
+(2, 'Bruxelles', 'Belgique','Bruxelles'),
+(3, 'Berlin', 'Allemagne','Berlin'),
+(4, 'Granada', 'Espagne','Madrid'),
+(5,  'Bologna', 'Italie','Rome'),
+(6, 'Lisbonne', 'Portugal','Lisbonne'),
+(7, 'Amsterdam', 'Pays-Bas','Amsterdam'),
+(8, 'Vienne', 'Autriche','Vienne'),
+(9, 'Varsovie', 'Pologne','Varsovie'),
+(10, 'Athènes', 'Grèce','Athènes');
+
+ALTER TABLE utilisateurs ADD id_user_vile INT NOT NULL 
+
+SET GLOBAL FOREIGN_KEY_CHECKS=0;  
+
+ALTER TABLE `utilisateurs` ADD CONSTRAINT `FK_User_ville` FOREIGN KEY (`id_user_ville`) REFERENCES `villes`(`id_ville`) ON DELETE RESTRICT ON UPDATE RESTRICT;
