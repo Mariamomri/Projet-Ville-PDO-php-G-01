@@ -70,12 +70,12 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
           <th>nationalité</th>
         </tr>
         <?php // chercher dans bd sql 
-        $city = $pdo->prepare("SELECT nom, pays FROM villes WHERE pseudo = :pseudo");   // guardare le jointure
-        $city->execute(['pseudo' => $pseudo]);
+        // $city = $pdo->prepare("SELECT nom, pays FROM villes WHERE pseudo = :pseudo");   // guardare le jointure
+        // $city->execute(['pseudo' => $pseudo]);
 
-        //data in form objet
-        $from = $city->fetch(PDO::FETCH_OBJ);
-        ?>
+        // //data in form objet
+        // $from = $city->fetch(PDO::FETCH_OBJ);
+        ?>bd
 
         <tr>
           <td><?php //echo $from->ville; 

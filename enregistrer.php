@@ -45,7 +45,7 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
 
     try {
         $req = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, pseudo, mot_de_passe, age, id_ville) 
-                              VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_ville)');
+        VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_ville)');
         $req->execute([
             'nom' => $nom,
             'prenom' => $prenom,
