@@ -181,6 +181,7 @@ footer {
   padding: 15px 0;
   text-align: center;
   color: white;
+  position: bottom;
 }
 
 footer a {
@@ -193,6 +194,19 @@ footer a {
 footer a:hover {
   color: #0f2027;
 }
+
+/* Permette al footer di stare sempre in basso */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+
 
 /* page login*/
 

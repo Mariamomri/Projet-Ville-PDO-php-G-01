@@ -32,8 +32,8 @@ require_once "./functions/autentifications.php";
     crossorigin="anonymous" />
 </head>
 
-<body>
-  <div class="container">
+<body class="wrapper">
+  <div class="container content">
     <header class="blog-header py-3 border-bottom text-center">
       <section class="flex">
         <div>
