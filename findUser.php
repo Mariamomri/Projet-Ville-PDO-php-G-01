@@ -9,6 +9,7 @@ require "bd.php";
 ?>
 <section class="yellow">
     <center><b>
+            <br>
             <h1>Find User</h1>
         </b></center>
     <div align="center">
@@ -41,26 +42,28 @@ require "bd.php";
                     <br>
                     <label>Id : </label>
                     <input readonly value="<?php echo $user->id_user; ?>">
-                    <br>
+                    <br><br>
                     <label>Nom : </label>
                     <input readonly value="<?php echo $user->nom; ?>">
-                    <br>
+                    <br><br>
                     <label>Prénom : </label>
                     <input readonly value="<?php echo $user->prenom; ?>">
-                    <br>
+                    <br><br>
                     <label>Pseudo : </label>
                     <input readonly value="<?php echo $user->pseudo; ?>">
-                    <br>
+                    <br><br>
                     <label>Mot de Passe : </label>
                     <input readonly value="<?php echo "xxxxxx" ?>">
-                    <br>
+                    <br><br>
                     <label>Age: </label>
                     <input readonly value="<?php echo $user->age; ?>">
                     <br>
                 </form>
+                <br>
 
             <?php endif; ?>
         </div>
+        <br>
 </section>
 </div>
 

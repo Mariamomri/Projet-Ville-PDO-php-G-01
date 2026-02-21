@@ -15,27 +15,45 @@ $pseudo = $_SESSION['pseudo'];
 
 
 // chercher dans bd sql 
-$user = $pdo->prepare("SELECT nom, prenom, pseudo FROM utilisateurs WHERE pseudo = :pseudo");
+$user = $pdo->prepare("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.pseudo, utilisateurs.id_user_ville, villes.nom AS ville, villes.pays, villes.capitale FROM utilisateurs LEFT JOIN villes ON utilisateurs.id_user_ville = villes.id_ville WHERE utilisateurs.pseudo = :pseudo
+");
+
 $user->execute(['pseudo' => $pseudo]);
 
-//data in form objet
+//data in formt objet
 $persona = $user->fetch(PDO::FETCH_OBJ);
+
+
+$villeObj = new Ville(
+  $persona->id_user_ville,
+  $persona->ville,
+  $persona->pays,
+  $persona->capitale
+);
+
 ?>
 
 <main class="main yellow">
   <section class="Profil profile-section ">
 
-    <section class="smain">
+    <section>
       <br>
 
       <h1>Bienvenue <?php echo $persona->prenom; ?> !</h1>
-      <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil">
+      <?php
+      if ($persona->prenom == "Julien") {
+        echo "<img src='assets/img/julien.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Mariam") {
+        echo "<img src='assets/img/profilf.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Nisrine") {
+        echo "<img src='assets/img/cat-facebook-profile-image-208004.jpg' alt='img profil' width='150px' class='img-profil'>";
+      } else {
+        echo "<img src='assets/img/profilx.avif' alt='img profil' width='150px' class='img-profil'>";
+      }
+
+      ?>
     </section>
-    <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
-    <br>
 
-
-    <img src="assets/img/neon-frame-vibrant-colored-glowing-neon-frame-with-transparent-background-png.png" alt="">
     <section>
 
       <h1>Profil</h1>
@@ -45,35 +63,19 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
       if ($persona) {
         echo "Nom : " . $persona->nom . "<br>";
         echo "Prenom : " . $persona->prenom . "<br>";
-        echo "Pseudo : " . $persona->pseudo;
+        echo "Pseudo : " . $persona->pseudo . "<br>";
+        echo "Ville : " . $villeObj->getNom() . "<br>";
+        echo "nationalité : " . $villeObj->getNationalite() . "<br>";
       } else {
         echo "Utilisateur non trouvé";
       }
       ?>
+      <br>
+      <br>
 
-
-      <h2>ville et la nationalité</h2>
-
-      <table border="1">
-        <tr>
-          <th>Ville</th>
-          <th>nationalité</th>
-        </tr>
-
-        <?php
-        // Mostriamo tutte le conversioni salvate
-        // if (!empty($_SESSION["transactions"])) {
-        //   foreach ($_SESSION["transactions"] as $t) {
-        //     echo "<tr>
-        //                         <td>" . $t["type"] . "</td>
-        //                         <td>" . $t["amount"] . "</td>
-        //                       </tr>";
-        //   }
-        // } 
-        ?>
-
-      </table>
     </section>
+
+    <img src="assets/img/sco.gif" alt="in cours">
 </main>
 
 <?php

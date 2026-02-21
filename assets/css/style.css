@@ -6,6 +6,10 @@ body {
   color: white;
 }
 
+.white {
+  color: white;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -89,7 +93,53 @@ nav a.active {
   border-radius: 50%;
   margin: 0px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  ;
 }
+
+.f {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* menu dropdown */
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  border: 1px solid #c9a961;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  min-width: 160px;
+  z-index: 1;
+  /* massimo per sicurezza */
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 8px 15px;
+  color: #22566dff;
+  text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #222;
+  color: #c9a961;
+}
+
 
 
 /* page index*/
@@ -135,6 +185,7 @@ footer {
   padding: 15px 0;
   text-align: center;
   color: white;
+  position: bottom;
 }
 
 footer a {
@@ -147,6 +198,18 @@ footer a {
 footer a:hover {
   color: #0f2027;
 }
+
+/* Permette al footer di stare sempre in basso */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
 
 /* page login*/
 
@@ -198,7 +261,7 @@ footer a:hover {
 
 /* Button */
 .btn-form-log {
-  width: 100%;
+  width: 30%;
   padding: 12px;
   margin-top: 10px;
   background-color: #c9a961;
@@ -208,6 +271,10 @@ footer a:hover {
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s;
+}
+
+.corto {
+  width: 100%;
 }
 
 .btn-form-log:hover {
@@ -290,7 +357,8 @@ footer a:hover {
 
 /* profil*/
 .yellow {
-  background-color: #eeebe4;
+  background-color: #f1f1ef;
+  text-align: center;
 }
 
 /* profilo */
@@ -322,8 +390,6 @@ footer a:hover {
   font-size: 1.25rem;
 }
 
-/* profile */
-
 .monProfil {
   display: flex;
   flex-direction: column;
@@ -335,6 +401,10 @@ footer a:hover {
   border: 5px solid rgb(239, 230, 181);
   box-shadow: 0 4px 24px rgba(218, 32, 172, 0.1), 0 1.5px 8px rgba(0, 0, 0, 0.08);
   z-index: 2;
+}
+
+td {
+  text-align: center;
 }
 
 /*login*/
