@@ -1,12 +1,12 @@
 <?php
 
-// versione nisrin da aggiustare 
 session_start();
 
 $title = "Enregistrement";
 $nav = "createUser";
 require "header.php";
 require "bd.php";
+require "classes/Utilisateur.php";
 
 // Récupérer toutes les villes
 try {
@@ -16,24 +16,6 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-// Fonction nationalité
-function nationalite($pays)
-{
-    $map = [
-        "France" => "Français",
-        "Belgique" => "Belge",
-        "Allemagne" => "Allemand",
-        "Espagne" => "Espagnol",
-        "Italie" => "Italien",
-        "Portugal" => "Portugais",
-        "Pays-Bas" => "Néerlandais",
-        "Autriche" => "Autrichien",
-        "Pologne" => "Polonais",
-        "Grèce" => "Grec"
-    ];
-    return $map[$pays];
-}
-
 // Traitement du formulaire
 if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age']) && !empty($_POST['ville'])) {
     $nom = $_POST['nom'];
@@ -41,18 +23,18 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
     $pseudo = $_POST['pseudo'];
     $mot_de_passe = $_POST['mot_de_passe']; // en clair
     $age = $_POST['age'];
-    $id_ville = $_POST['ville'];
+    $id_user_ville = $_POST['ville'];
 
     try {
-        $req = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, pseudo, mot_de_passe, age, id_ville) 
-        VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_ville)');
+        $req = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, pseudo, mot_de_passe, age, id_user_ville) 
+        VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_user_ville)');
         $req->execute([
             'nom' => $nom,
             'prenom' => $prenom,
             'pseudo' => $pseudo,
             'mot_de_passe' => $mot_de_passe,
             'age' => $age,
-            'id_ville' => $id_ville
+            'id_user_ville' => $id_user_ville
         ]);
         echo "<p>L'utilisateur $prenom $nom a été ajouté !</p>";
     } catch (PDOException $e) {
@@ -76,9 +58,16 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
             <label>Ville :</label>
             <select name="ville" required>
                 <option value="">-- Sélectionnez une ville --</option>
-                <?php foreach ($villes as $ville): ?>
-                    <option value="<?= $ville->id_ville ?>"><?= $ville->nom ?> (<?= nationalite($ville->pays) ?>)</option>
+                <?php foreach ($villes as $v): ?>
+                    <?php
+                    $villeObj = new Ville($v->id_ville, $v->nom, $v->pays, $v->capitale);
+                    ?>
+                    <option value="<?= $villeObj->getIdVille() ?>">
+                        <?= $villeObj->getNom() ?> (<?= $villeObj->getNationalite() ?>)
+                    </option>
                 <?php endforeach; ?>
+
+
             </select><br><br>
 
             <button class="btn btn-primary" type="submit">S'enregistrer</button>

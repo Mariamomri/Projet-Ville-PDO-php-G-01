@@ -54,20 +54,17 @@ require "bd.php";
             ?>
 
             <form action="./createUser.php" method="POST">
+                <br>
                 <input type="text" name="nom" placeholder="Nom" required>
-                <br>
+                <br> <br>
                 <input type="text" name="prenom" placeholder="Prénom" required>
-                <br>
+                <br> <br>
                 <input type="text" name="pseudo" placeholder="Pseudo" required>
-                <br>
+                <br> <br>
                 <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
-                <br>
+                <br> <br>
                 <input type="number" name="age" placeholder="Age" required>
-                <br><br>
-
-
-
-                <label>Ville :</label>
+                <br> <br>
                 <select name="ville" required>
                     <option value="">-- Sélectionnez une ville --</option>
                     <?php foreach ($villes as $ville): ?>
