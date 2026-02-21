@@ -9,6 +9,7 @@ require "bd.php";
 ?>
 <section class="yellow">
     <center><b>
+            <br>
             <h1>Add User</h1>
         </b></center>
     <div align="center">
