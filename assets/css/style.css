@@ -6,6 +6,10 @@ body {
   color: white;
 }
 
+.white {
+  color: white;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -349,7 +353,8 @@ footer a:hover {
 
 /* profil*/
 .yellow {
-  background-color: #eeebe4;
+  background-color: #f1f1ef;
+  text-align: center;
 }
 
 /* profilo */

@@ -70,7 +70,7 @@ require "bd.php";
                 <br><br>
 
                 <!-- TABLEAU DES PAYS -->
-                <h2 style="color:white">Les 10 pays de notre site</h2>
+                <h2 class="white">Les 10 pays de notre site</h2>
                 <?php
                 $resultat = $pdo->query('SELECT * FROM villes LIMIT 10');
                 $tabVilles = $resultat->fetchAll(PDO::FETCH_OBJ);

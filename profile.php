@@ -18,14 +18,14 @@ $pseudo = $_SESSION['pseudo'];
 $user = $pdo->prepare("SELECT nom, prenom, pseudo FROM utilisateurs WHERE pseudo = :pseudo");
 $user->execute(['pseudo' => $pseudo]);
 
-//data in form objet
+//data in formt objet
 $persona = $user->fetch(PDO::FETCH_OBJ);
 ?>
 
 <main class="main yellow">
   <section class="Profil profile-section ">
 
-    <section class="smain">
+    <section>
       <br>
 
       <h1>Bienvenue <?php echo $persona->prenom; ?> !</h1>
@@ -41,13 +41,8 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
       }
 
       ?>
-      <!-- <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil"> -->
     </section>
-    <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
-    <br>
 
-
-    <img src="assets/img/neon-frame-vibrant-colored-glowing-neon-frame-with-transparent-background-png.png" alt="">
     <section>
 
       <h1>Profil</h1>
@@ -62,7 +57,10 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
         echo "Utilisateur non trouvé";
       }
       ?>
-
+      <br>
+      <br>
+      <br>
+      <br>
 
       <h2>ville et la nationalité</h2>
 
@@ -87,7 +85,10 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
         </tr>
 
       </table>
+
     </section>
+
+    <img src="assets/img/sco.gif" alt="in cours">
 </main>
 
 <?php
