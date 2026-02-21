@@ -59,18 +59,20 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
           <th>Ville</th>
           <th>nationalité</th>
         </tr>
+        <?php // chercher dans bd sql 
+        // $city = $pdo->prepare("SELECT nom, pays FROM villes WHERE pseudo = :pseudo");   // guardare le jointure
+        // $city->execute(['pseudo' => $pseudo]);
 
-        <?php
-        // Mostriamo tutte le conversioni salvate
-        // if (!empty($_SESSION["transactions"])) {
-        //   foreach ($_SESSION["transactions"] as $t) {
-        //     echo "<tr>
-        //                         <td>" . $t["type"] . "</td>
-        //                         <td>" . $t["amount"] . "</td>
-        //                       </tr>";
-        //   }
-        // } 
+        // //data in form objet
+        // $from = $city->fetch(PDO::FETCH_OBJ);
         ?>
+
+        <tr>
+          <td><?php //echo $from->ville; 
+              ?></td>
+          <td><?php //echo $from->pays; 
+              ?></td>
+        </tr>
 
       </table>
     </section>

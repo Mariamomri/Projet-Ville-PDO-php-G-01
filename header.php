@@ -51,11 +51,11 @@ require_once "./functions/autentifications.php";
               <?php if (is_connected()): ?>
                 <div class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle <?php if (isset($nav) && ($nav === "base de données" || $nav === "createUser")): ?>active<?php endif ?>"
-                    href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    href="#" id="titleMenu" role="button" aria-expanded="false">
                     CRUD
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="titleMenu">
-                    <li><a class="dropdown-item" href="./listUsers">All Users</a></li>
+                    <li><a class="dropdown-item" href="./listUsers.php">All Users</a></li>
                     <li><a class="dropdown-item" href="./createUser.php">Create User</a></li>
                     <li><a class="dropdown-item" href="./findUser.php">Read User</a></li>
                     <li><a class="dropdown-item" href="./updateUser.php">Update User</a></li>

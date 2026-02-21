@@ -99,6 +99,44 @@ nav a.active {
   justify-content: space-between;
 }
 
+/* menu dropdown */
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  border: 1px solid #c9a961;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  min-width: 160px;
+  z-index: 1;
+  /* massimo per sicurezza */
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 8px 15px;
+  color: #22566dff;
+  text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #222;
+  color: #c9a961;
+}
+
+
 
 /* page index*/
 h3 {
