@@ -386,8 +386,6 @@ footer a:hover {
   font-size: 1.25rem;
 }
 
-/* profile */
-
 .monProfil {
   display: flex;
   flex-direction: column;
@@ -399,6 +397,10 @@ footer a:hover {
   border: 5px solid rgb(239, 230, 181);
   box-shadow: 0 4px 24px rgba(218, 32, 172, 0.1), 0 1.5px 8px rgba(0, 0, 0, 0.08);
   z-index: 2;
+}
+
+td {
+  text-align: center;
 }
 
 /*login*/

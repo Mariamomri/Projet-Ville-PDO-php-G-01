@@ -1,6 +1,6 @@
 <?php
 
-require "classes/Villes.php";
+require "classes/Ville.php";
 
 class Utilisateur
 {
@@ -11,7 +11,6 @@ class Utilisateur
   private string $pseudo;
   private string $motDePasse;
   private int $age;
-  private bool $connecte;
 
   // construsteur
   public function __construct(
@@ -21,7 +20,6 @@ class Utilisateur
     string $unPseudo,
     string $uneMotDePasse,
     int $uneAge,
-    bool $connecte
   ) {
     $this->id = $uneId;
     $this->nom = $unNom;
@@ -29,7 +27,6 @@ class Utilisateur
     $this->pseudo = $unPseudo;
     $this->motDePasse = $uneMotDePasse;
     $this->age = $uneAge;
-    $this->connecte = $connecte;
   }
 
   // Getters
@@ -62,16 +59,11 @@ class Utilisateur
     return $this->age;
   }
 
-  //quand vous avez un booléen prenez l'habitude de faire le getter avec is
-  public function isConnecte(): bool
-  {
-    return $this->connecte;
-  }
 
 
 
   //Setters
-  public function setId(string $uneId): void
+  public function setId(int $uneId): void
   {
     $this->id = $uneId;
   }
@@ -91,7 +83,7 @@ class Utilisateur
     $this->pseudo = $unPseudo;
   }
 
-  public function setVitessMax(int $uneMotDePasse): void
+  public function setMotDePasse(string $uneMotDePasse): void
   {
     $this->motDePasse = $uneMotDePasse;
   }
@@ -101,10 +93,6 @@ class Utilisateur
     $this->age = $uneAge;
   }
 
-  public function setConnecte(bool $connecte): void
-  {
-    $this->connecte = $connecte;
-  }
 
 
   //to string
