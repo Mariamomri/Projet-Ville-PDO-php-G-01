@@ -37,10 +37,12 @@ if (isset($_POST['delete'])) {
             <br>
             <form action="deleteUser.php" method="POST">
                 <input type="number" name="id_user" placeholder="Entrez l'id de l'user">
+                <br>
                 <button type="submit" class="btn-form-log">Rechercher</button>
             </form>
             <?php if (isset($resultat) && $resultat != false): ?>
                 <form action="deleteUser.php" method="POST">
+                    <br>
                     <label>Id : </label>
                     <input readonly name="id_u" value="<?php echo $resultat->id_user; ?>">
                     <br><br>
