@@ -1,10 +1,12 @@
 <?php
+session_start();
 $title = "Create User";
 $nav = "createUser";
 require "header.php";
 if (!is_connected()) {
     header("location: ./login.php");
 }
+require "header.php";
 require "bd.php";
 ?>
 <section class="yellow">
@@ -81,7 +83,5 @@ require "bd.php";
     </div>
 </section>
 <?php
-
 require "footer.php";
-
 ?>

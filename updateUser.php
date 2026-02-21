@@ -1,4 +1,5 @@
 <?php
+session_start();
 $nav = "updateuser";
 $title = "Update User";
 $erreur = null;

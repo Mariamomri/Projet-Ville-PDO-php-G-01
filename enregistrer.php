@@ -71,8 +71,10 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
             </select><br><br>
 
             <button class="btn btn-primary" type="submit">S'enregistrer</button>
+            <button class="btn btn-primary" type="submit">S'enregistrer</button>
         </form>
     </div>
 </div>
 
+<?php require "footer.php"; ?>
 <?php require "footer.php"; ?>

@@ -2,12 +2,14 @@
 
 $title = "Profil";
 $nav = "profil";
-require "header.php";
-require "classes/Utilisateur.php";
-require "bd.php";
+
+require_once "./functions/autentifications.php";
+
+
 
 if (!is_connected()) {
   header("Location: ./login.php");
+  exit;
 }
 
 //recuper le pseudo de login
@@ -78,9 +80,7 @@ $villeObj = new Ville(
     <img src="assets/img/sco.gif" alt="in cours">
 </main>
 
-<?php
-require "footer.php";
-?>
-</div>
+<?php require "footer.php"; ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>

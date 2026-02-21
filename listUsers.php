@@ -1,10 +1,12 @@
 <?php
+session_start();
 $title = "List Of Users";
 $nav = "listUsers";
 require "header.php";
 
 if (!is_connected()) {
     header("location: ./login.php");
+    exit;
 }
 
 require "bd.php";

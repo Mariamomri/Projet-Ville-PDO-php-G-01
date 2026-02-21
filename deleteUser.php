@@ -1,4 +1,5 @@
 <?php
+session_start();
 $nav = "deleteuser";
 $title = "delete User";
 $erreur = null;
@@ -7,22 +8,32 @@ require "header.php";
 require "bd.php";
 if (!is_connected()) {
     header("Location: login.php");
+    exit;
 }
+require "header.php";
+require "bd.php";
 
+$resultat = null;
+$erreur = null;
+
+// Recherche de l'utilisateur
 if (!empty($_POST['id_user'])) {
     try {
-        $req = $pdo->query('SELECT * FROM utilisateurs WHERE id_user = "' . $_POST['id_user'] . '";');
-        //ici on utilise le fetch sans le ALL, il renvoi juste un seul objet.
-        $resultat = $req->fetch(PDO::FETCH_OBJ);
+        $stmt = $pdo->prepare('SELECT * FROM utilisateurs WHERE id_user = :id_user');
+        $stmt->execute(['id_user' => $_POST['id_user']]);
+        $resultat = $stmt->fetch(PDO::FETCH_OBJ);
     } catch (PDOException $e) {
         die("Erreur : " . $e->getMessage());
     }
 }
+
+// Suppression
 if (isset($_POST['delete'])) {
     try {
-        $req = $pdo->prepare('DELETE FROM utilisateurs WHERE id_user = "' . $_POST['id_u'] . '"');
-        $req->execute();
-        echo "Suppression réussie de l'utilisateur " . $_POST['id_u'] . " !<br>";
+        $stmt = $pdo->prepare('DELETE FROM utilisateurs WHERE id_user = :id_user');
+        $stmt->execute(['id_user' => $_POST['id_u']]);
+        echo "<p>Suppression réussie de l'utilisateur " . $_POST['id_u'] . " !</p>";
+        $resultat = null; // pour ne plus afficher le formulaire après suppression
     } catch (PDOException $e) {
         die("Erreur : " . $e->getMessage());
     }
