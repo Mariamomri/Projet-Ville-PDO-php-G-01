@@ -42,6 +42,7 @@ require "bd.php";
             echo "Veuillez remplir les champs correctement";
         endif;
 
+
         ?>
 
         <form action="./createUser.php" method="POST">
@@ -55,6 +56,9 @@ require "bd.php";
             <br>
             <input type="number" name="age" placeholder="Age" required>
             <br><br>
+
+
+
             <!-- <select name="ville" required>
                 <option value="Bruxelles">Bruxelles</option>
                 <option value="Bologna">Bologna</option>

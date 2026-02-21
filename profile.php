@@ -29,7 +29,19 @@ $persona = $user->fetch(PDO::FETCH_OBJ);
       <br>
 
       <h1>Bienvenue <?php echo $persona->prenom; ?> !</h1>
-      <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil">
+      <?php
+      if ($persona->prenom == "Julien") {
+        echo "<img src='assets/img/julien.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Mariam") {
+        echo "<img src='assets/img/profilf.png' alt='img profil' width='150px' class='img-profil'>";
+      } else if ($persona->prenom == "Nisrine") {
+        echo "<img src='assets/img/cat-facebook-profile-image-208004.jpg' alt='img profil' width='150px' class='img-profil'>";
+      } else {
+        echo "<img src='assets/img/profilx.avif' alt='img profil' width='150px' class='img-profil'>";
+      }
+
+      ?>
+      <!-- <img src="assets/img/cat-facebook-profile-image-208004.jpg" alt="img profil" width="150px" class="img-profil"> -->
     </section>
     <img src="assets/img/sco.gif" alt="coriandoli" class="coriandoli" width="400px">
     <br>
