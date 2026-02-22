@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
-
-require_once "/functions/
-  autentifications.php";
+require_once "./functions/autentifications.php";
 ?>
 
 <head>
@@ -22,8 +20,7 @@ require_once "/functions/
     ?>
   </title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
 
   <!-- link bootstrap -->
@@ -34,39 +31,76 @@ require_once "/functions/
     crossorigin="anonymous" />
 </head>
 
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="logo">
-        <img src="échange-de-signes-change-euro-et-dollar-conversion-monétaire-illustration-vectorielle-isolée-sur-fond-blanc-258991261.webp" alt="logo-img" width="100px">
-        <h1 class="titheader">Conversion</h1>
-      </div>
+<body class="wrapper">
+  <div class="container content">
+    <header class="blog-header py-3 border-bottom text-center">
+      <section class="flex">
+        <div>
+          <img src="assets/img/earth.gif" alt="monde" width="150px">
+        </div>
+        <div>
+          <a class="blog-header-logo text-white" href="#" style="font-size: 2rem; font-weight: bold;">
+            LES PAYS A TRAVERS LE MONDE
+          </a>
 
-      <nav>
-        <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
-        <a href="./bourse.php" class="nav-item<?php if (isset($nav) && $nav === "......"): ?> active<?php endif ?>">......</a>
+          <section class="navbar-nav mr-auto">
+            <nav>
+              <a href="./index.php" class="nav-item<?php if (isset($nav) && $nav === "index"): ?> active<?php endif ?>">Accueil</a>
 
-        <?php if (is_connected()): ?>
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="titleMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Title menu dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="titleMenu">
-              <li><a class="dropdown-item" href="......php">......</a></li>
-              <li><a class="dropdown-item" href="......php">......</a></li>
-              <li><a class="dropdown-item" href="......php">.......</a></li>
-            </ul>
-          </div>
+              <?php if (is_connected()): ?>
+                <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle <?php if (isset($nav) && ($nav === "base de données" || $nav === "createUser")): ?>active<?php endif ?>"
+                    href="#" id="titleMenu" role="button" aria-expanded="false">
+                    CRUD
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="titleMenu">
+                    <li><a class="dropdown-item" href="./listUsers.php">All Users</a></li>
+                    <li><a class="dropdown-item" href="./createUser.php">Create User</a></li>
+                    <li><a class="dropdown-item" href="./findUser.php">Read User</a></li>
+                    <li><a class="dropdown-item" href="./updateUser.php">Update User</a></li>
+                    <li><a class="dropdown-item" href="./deleteUser.php">Delete User</a></li>
+                  </ul>
+                </div>
 
-          <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
-        <?php endif; ?>
-      </nav>
-      <nav>
-        <?php if (!is_connected()): ?>
-          <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login</a>
-        <?php else : ?>
-          <a class="nav-item log" href="./logout.php">Logout</a>
-        <?php endif; ?>
-      </nav>
+                <a href="./profile.php" class="nav-item <?php if (isset($nav) && $nav === "profil"): ?> active<?php endif ?>">Profil</a>
+              <?php endif; ?>
+            </nav>
+          </section>
+        </div>
+        <div>
+          <nav class="right">
+            <?php if (!is_connected()): ?>
+              <section class="f">
+                <div>
+                  <a href="login.php" class="nav-item<?php if (isset($nav) && $nav === "login"): ?> active<?php endif ?>">Login <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+                </div><br><br>
+
+                <div>
+                  <a href="./enregistrer.php" class="nav-item<?php if (isset($nav) && $nav === "S'enregistrer"): ?> active<?php endif ?>">S'enregistrer</a>
+                </div>
+              </section>
+
+            <?php else : ?>
+              <a class="nav-item" href="./logout.php">Logout <img src="assets/img/Connexion.png" alt="login" width="15px" /></a>
+            <?php endif; ?>
+          </nav>
+        </div>
+      </section>
+
 
     </header>
+
+    <nav class="nav d-flex justify-content-center py-2 mb-3">
+
+      <!-- Profil -->
+      <?php if (is_connected()): ?>
+        <a class="nav-link text-muted <?php if ($nav === 'profile') echo 'active font-weight-bold text-dark'; ?>"
+          href="/PHP/Projet-Ville-PDO-php-G-01/profile.php">Mon Profil</a>
+
+      <?php endif; ?>
+
+      <!-- fin -->
+
+
+    </nav>
+  </div>
