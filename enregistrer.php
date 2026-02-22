@@ -42,37 +42,38 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
     }
 }
 ?>
+<section class="yellow">
+    <center>
+        <br>
+        <h1>Enregistrement</h1>
+    </center>
+    <div align="center">
+        <div class="col-6 ">
+            <form action="" method="POST">
+                <br>
+                <input type="text" name="nom" placeholder="Nom" required><br><br>
+                <input type="text" name="prenom" placeholder="Prénom" required><br><br>
+                <input type="text" name="pseudo" placeholder="Pseudo" required><br><br>
+                <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br><br>
+                <input type="number" name="age" placeholder="Age" required><br><br>
+                <select name="ville" required>
+                    <option value="">-- Sélectionnez une ville --</option>
+                    <?php foreach ($villes as $v): ?>
+                        <?php
+                        $villeObj = new Ville($v->id_ville, $v->nom, $v->pays, $v->capitale);
+                        ?>
+                        <option value="<?= $villeObj->getIdVille() ?>">
+                            <?= $villeObj->getNom() ?> (<?= $villeObj->getNationalite() ?>)
+                        </option>
+                    <?php endforeach; ?>
 
-<center>
-    <h1 style="color:white">Enregistrement</h1>
-</center>
-<div align="center">
-    <div class="col-6">
-        <form action="" method="POST">
-            <input type="text" name="nom" placeholder="Nom" required><br>
-            <input type="text" name="prenom" placeholder="Prénom" required><br>
-            <input type="text" name="pseudo" placeholder="Pseudo" required><br>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
-            <input type="number" name="age" placeholder="Age" required><br>
 
-            <label>Ville :</label>
-            <select name="ville" required>
-                <option value="">-- Sélectionnez une ville --</option>
-                <?php foreach ($villes as $v): ?>
-                    <?php
-                    $villeObj = new Ville($v->id_ville, $v->nom, $v->pays, $v->capitale);
-                    ?>
-                    <option value="<?= $villeObj->getIdVille() ?>">
-                        <?= $villeObj->getNom() ?> (<?= $villeObj->getNationalite() ?>)
-                    </option>
-                <?php endforeach; ?>
+                </select><br><br>
 
-
-            </select><br><br>
-
-            <button class="btn btn-primary" type="submit">S'enregistrer</button>
-        </form>
+                <button class="btn-form-log" type="submit">S'enregistrer</button><br><br>
+            </form><br>
+        </div><br>
     </div>
-</div>
+</section>
 
 <?php require "footer.php"; ?>
