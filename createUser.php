@@ -15,10 +15,7 @@ require "bd.php";
     <div align="center">
         <div class="col-6">
             <?php
-
             if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['pseudo']) && !empty($_POST['mot_de_passe']) && !empty($_POST['age']) && !empty($_POST['ville'])):
-
-
                 $nom = $_POST['nom'];
                 $prenom = $_POST['prenom'];
                 $pseudo = $_POST['pseudo'];
@@ -27,21 +24,20 @@ require "bd.php";
                 $id_ville = $_POST['ville'];
 
                 try {
-                    $req = $pdo->prepare('INSERT INTO utilisateurs VALUES(:id_user, :nom, :prenom, :pseudo, :mot_de_passe, :age, :id_user_ville)');
-                    $req->execute(array(
-                        'id_user' => NULL,
+                    $req = $pdo->prepare('INSERT INTO utilisateurs (nom, prenom, pseudo, mot_de_passe, age, id_user_ville) 
+                                      VALUES(:nom, :prenom, :pseudo, :mot_de_passe, :age, :id_user_ville)');
+                    $req->execute([
                         'nom' => $nom,
                         'prenom' => $prenom,
                         'pseudo' => $pseudo,
                         'mot_de_passe' => $mot_de_passe,
                         'age' => $age,
                         'id_user_ville' => $id_ville
-                    ));
-                    echo "L'utilisateur " . $nom . " " . $prenom . " a été ajouté<br>";
+                    ]);
+                    echo "L'utilisateur " . $nom . " " . $prenom . " a été ajouté !";
                 } catch (PDOException $e) {
                     echo "Erreur : " . $e->getMessage();
                 }
-
             else:
                 if (!empty($_POST)):
                     echo "Veuillez remplir les champs correctement";
@@ -50,21 +46,16 @@ require "bd.php";
 
             // Récupérer les villes
             $villes = $pdo->query("SELECT * FROM villes ORDER BY nom")->fetchAll(PDO::FETCH_OBJ);
-
             ?>
 
             <form action="./createUser.php" method="POST">
-                <br>
-                <input type="text" name="nom" placeholder="Nom" required>
-                <br> <br>
-                <input type="text" name="prenom" placeholder="Prénom" required>
-                <br> <br>
-                <input type="text" name="pseudo" placeholder="Pseudo" required>
-                <br> <br>
-                <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
-                <br> <br>
-                <input type="number" name="age" placeholder="Age" required>
-                <br> <br>
+                <input style="color:black" type="text" name="nom" placeholder="Nom" required><br>
+                <input style="color:black" type="text" name="prenom" placeholder="Prénom" required><br>
+                <input style="color:black" type="text" name="pseudo" placeholder="Pseudo" required><br>
+                <input style="color:black" type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
+                <input style="color:black" type="number" name="age" placeholder="Age" required><br><br>
+
+                <label>Ville :</label>
                 <select name="ville" required>
                     <option value="">-- Sélectionnez une ville --</option>
                     <?php foreach ($villes as $ville): ?>
@@ -72,13 +63,12 @@ require "bd.php";
                     <?php endforeach; ?>
                 </select>
                 <br><br>
-                <br>
 
                 <button class="btn-form-log" type="submit">Ajouter</button>
             </form>
-            <br>
         </div>
     </div>
+
 </section>
 <?php
 
