@@ -8,31 +8,9 @@ if (!is_connected()) {
     header("location: ./login.php");
     exit;
 }
-require "header.php";
+require_once "classes/Villes.php";
 require "bd.php";
 
-// Fonction nationalité
-function getNationalite($pays)
-{
-    $map = [
-        "France" => "Française",
-        "Belgique" => "Belge",
-        "Allemagne" => "Allemande",
-        "Espagne" => "Espagnole",
-        "Italie" => "Italienne",
-        "Portugal" => "Portugaise",
-        "Pays-Bas" => "Néerlandaise",
-        "Autriche" => "Autrichienne",
-        "Pologne" => "Polonaise",
-        "Grèce" => "Grecque"
-    ];
-
-    if (isset($map[$pays])) {
-        return $map[$pays];
-    } else {
-        return $pays;
-    }
-}
 ?>
 
 <section class="yellow">
@@ -43,20 +21,19 @@ function getNationalite($pays)
     <div align="center">
         <div class="col-6">
             <?php
-            $user = null;
             if (!empty($_POST['id'])):
                 try {
                     $stmt = $pdo->prepare("
-                        SELECT u.*, v.nom AS ville, v.pays
-                        FROM utilisateurs u
-                        LEFT JOIN villes v ON u.id_ville = v.id_ville
-                        WHERE u.id_user = :id
-                    ");
+                    SELECT utilisateurs.*, villes.nom AS ville, villes.pays, villes.capitale
+                    FROM utilisateurs
+                    LEFT JOIN villes ON utilisateurs.id_user_ville = villes.id_ville
+                    WHERE utilisateurs.id_user = :id
+                ");
                     $stmt->execute(['id' => $_POST['id']]);
                     $user = $stmt->fetch(PDO::FETCH_OBJ);
 
                     if (!$user) {
-                        echo "<p>Utilisateur " . $_POST['id'] . " non trouvé</p>";
+                        echo "Utilisateur " . $_POST['id'] . " non trouvé";
                     }
                 } catch (PDOException $e) {
                     echo "Erreur : " . $e->getMessage();
@@ -74,35 +51,28 @@ function getNationalite($pays)
                 <form>
                     <br>
                     <label>Id : </label>
-                    <input readonly value="<?php echo $user->id_user; ?>">
-                    <br><br>
+                    <input style="color:black" readonly value="<?= $user->id_user ?>"><br>
                     <label>Nom : </label>
-                    <input readonly value="<?php echo $user->nom; ?>">
-                    <br><br>
+                    <input style="color:black" readonly value="<?= $user->nom ?>"><br>
                     <label>Prénom : </label>
-                    <input readonly value="<?php echo $user->prenom; ?>">
-                    <br><br>
+                    <input style="color:black" readonly value="<?= $user->prenom ?>"><br>
                     <label>Pseudo : </label>
-                    <input readonly value="<?php echo $user->pseudo; ?>">
-                    <br><br>
+                    <input style="color:black" readonly value="<?= $user->pseudo ?>"><br>
                     <label>Mot de Passe : </label>
-                    <input readonly value="<?php echo "xxxxxx" ?>">
-                    <br><br>
-                    <label>Age: </label>
-                    <input readonly value="<?= $user->age; ?>">
-                    <br>
-                    <label>Ville: </label>
-                    <input readonly value="<?= $user->ville; ?>">
-                    <br>
-                    <label>Nationalité: </label>
-                    <input readonly value="<?= getNationalite($user->pays); ?>">
-                    <br>
+                    <input style="color:black" readonly value="xxxxxx"><br>
+                    <label>Age : </label>
+                    <input style="color:black" readonly value="<?= $user->age ?>"><br>
+                    <label>Ville : </label>
+                    <input style="color:black" readonly value="<?= $user->ville ?>"><br>
+                    <label>Nationalité : </label>
+                    <?php
+                    $villeObj = new Villes($user->id_user_ville, $user->ville, $user->pays, $user->capitale);
+                    ?>
+                    <input style="color:black" readonly value="<?= $villeObj->getNationalite() ?>">
                 </form>
                 <br>
-
             <?php endif; ?>
         </div>
-        <br>
 </section>
 
 <?php

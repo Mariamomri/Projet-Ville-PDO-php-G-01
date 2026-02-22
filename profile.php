@@ -17,22 +17,18 @@ $pseudo = $_SESSION['pseudo'];
 
 
 // chercher dans bd sql 
-$user = $pdo->prepare("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.pseudo, utilisateurs.id_user_ville, villes.nom AS ville, villes.pays, villes.capitale FROM utilisateurs LEFT JOIN villes ON utilisateurs.id_user_ville = villes.id_ville WHERE utilisateurs.pseudo = :pseudo
+
+$user = $pdo->prepare("SELECT utilisateurs.nom, utilisateurs.prenom, utilisateurs.pseudo, utilisateurs.id_user_ville, 
+           villes.nom AS ville, villes.pays, villes.capitale
+    FROM utilisateurs
+    LEFT JOIN villes ON utilisateurs.id_user_ville = villes.id_ville
+    WHERE utilisateurs.pseudo = :pseudo
 ");
 
 $user->execute(['pseudo' => $pseudo]);
 
 //data in formt objet
 $persona = $user->fetch(PDO::FETCH_OBJ);
-
-
-$villeObj = new Ville(
-  $persona->id_user_ville,
-  $persona->ville,
-  $persona->pays,
-  $persona->capitale
-);
-
 ?>
 
 <main class="main yellow">
@@ -66,14 +62,37 @@ $villeObj = new Ville(
         echo "Nom : " . $persona->nom . "<br>";
         echo "Prenom : " . $persona->prenom . "<br>";
         echo "Pseudo : " . $persona->pseudo . "<br>";
-        echo "Ville : " . $villeObj->getNom() . "<br>";
-        echo "nationalité : " . $villeObj->getNationalite() . "<br>";
+        $ville = new Villes($persona->id_user_ville, $persona->ville, $persona->pays, $persona->capitale);
+        echo "Nationalité : " . $ville->getNationalite() . "<br>";
       } else {
         echo "Utilisateur non trouvé";
       }
       ?>
       <br>
       <br>
+      <br>
+      <br>
+
+      <h2>ville et la nationalité</h2>
+
+      <div align="center">
+        <div class="col-6">
+          <table class="table table-responsive table-hover table-striped table-dark table-bordered">
+            <thead class="bg-dark text-white">
+              <tr align="center">
+                <th>Ville</th>
+                <th>Nationalité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr align="center">
+                <td><?= $persona->ville ?></td>
+                <td><?= $ville->getNationalite() ?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     </section>
 

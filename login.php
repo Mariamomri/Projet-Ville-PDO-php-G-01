@@ -51,12 +51,12 @@ require "header.php"; // ← HTML seulement ici
                     <br>
                     <input type="password" name="password" placeholder="Entrez votre password" required>
                     <br>
-                    <button type="submit" class="btn-form-log corto">Se connecter</button>
+                    <button type="submit" class="btn-form-log">Se connecter</button>
 
                 </form>
 
                 <form action="./enregistrer.php" method="POST">
-                    <button type="submit" class="btn-form-log corto">S'enregistrer</button>
+                    <button type="submit" class="btn-form-log">S'enregistrer</button>
                 </form>
             </section>
         </div>
