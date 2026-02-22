@@ -190,7 +190,6 @@ footer {
   justify-content: space-between;
   align-items: center;
   font-size: larger;
-
 }
 
 footer a {
@@ -200,7 +199,9 @@ footer a {
   font-weight: bold;
 }
 
-footer a:hover {
+footer a:hover,
+/* footer a.active { */
+  {
   color: #22566dff;
   border-bottom-color: #c9a961;
 }

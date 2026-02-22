@@ -48,7 +48,7 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['pseudo']
         <h1>Enregistrement</h1>
     </center>
     <div align="center">
-        <div class="col-6 ">
+        <div class="col-6">
             <form action="" method="POST">
                 <br>
                 <input type="text" name="nom" placeholder="Nom" required><br><br>

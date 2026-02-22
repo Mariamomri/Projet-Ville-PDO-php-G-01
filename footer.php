@@ -3,11 +3,16 @@
 </div> <!--fermeture de wrapper dans le header.php-->
 <footer>
   <div class="am">
+    <div>
+      <?php
+      date_default_timezone_set("Europe/Brussels"); // fuso orario
+      ?>
+      <p class="date"><?= date("d/m/Y  H:i") ?></p>
+    </div>
     <p> &copy; 2026 Cfitech, Mariam & Nisrin</p>
-
   </div>
 
-  <section>
+  <section class="am">
     <div class="footerlink ">
       <!-- home -->
       <a href="./index.php" class="nav-item <?php if ($nav === "index"): ?> active<?php endif ?>">Home</a>
@@ -27,12 +32,7 @@
     </div>
   </section>
 
-  <div class="am">
-    <?php
-    date_default_timezone_set("Europe/Brussels"); // fuso orario
-    ?>
-    <p class="date"><?= date("d/m/Y  H:i") ?></p>
-  </div>
+
 </footer>
 
 
