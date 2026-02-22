@@ -78,16 +78,16 @@ class Ville
   public function getNationalite(): string
   {
     $map = [
-      "France"    => "Français(e)",
+      "France"    => "Française",
       "Belgique"  => "Belge",
-      "Allemagne" => "Allemand(e)",
-      "Espagne"   => "Espagnol(e)",
-      "Italie"    => "Italien(ne)",
-      "Portugal"  => "Portugais(e)",
-      "Pays-Bas"  => "Néerlandais(e)",
-      "Autriche"  => "Autrichien(ne)",
-      "Pologne"   => "Polonais(e)",
-      "Grèce"     => "Grec(que)"
+      "Allemagne" => "Allemande",
+      "Espagne"   => "Espagnole",
+      "Italie"    => "Italienne",
+      "Portugal"  => "Portugaise",
+      "Pays-Bas"  => "Néerlandaise",
+      "Autriche"  => "Autrichienne",
+      "Pologne"   => "Polonaise",
+      "Grèce"     => "Grecque"
     ];
 
     if (isset($map[$this->pays])) {
