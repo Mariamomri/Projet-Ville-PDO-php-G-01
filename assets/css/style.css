@@ -17,7 +17,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('../img/headerPays.jpg') no-repeat center center fixed;
+  background: url('assets/img/headerPays.jpg') no-repeat center center fixed;
   background-size: cover;
   z-index: -1;
 }
@@ -93,7 +93,7 @@ nav a.active {
   border-radius: 50%;
   margin: 0px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-  padding: 20px;
+  padding: 21px;
   ;
 }
 
