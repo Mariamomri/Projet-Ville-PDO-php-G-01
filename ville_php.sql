@@ -18,17 +18,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `ville_php`
+-- Database: `ville_php`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Table structure for table `utilisateurs`
 --
 
-CREATE TABLE `utilisateurs` (
-  `id_user` int NOT NULL,
+DROP TABLE IF EXISTS `utilisateurs`;
+CREATE TABLE IF NOT EXISTS `utilisateurs` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `prenom` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `pseudo` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,

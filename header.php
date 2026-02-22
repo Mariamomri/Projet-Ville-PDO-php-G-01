@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
+
 require_once "./functions/autentifications.php";
 ?>
 
@@ -89,18 +90,3 @@ require_once "./functions/autentifications.php";
 
 
     </header>
-
-    <nav class="nav d-flex justify-content-center py-2 mb-3">
-
-      <!-- Profil -->
-      <?php if (is_connected()): ?>
-        <a class="nav-link text-muted <?php if ($nav === 'profile') echo 'active font-weight-bold text-dark'; ?>"
-          href="/PHP/Projet-Ville-PDO-php-G-01/profile.php">Mon Profil</a>
-
-      <?php endif; ?>
-
-      <!-- fin -->
-
-
-    </nav>
-  </div>
